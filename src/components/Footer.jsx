@@ -41,7 +41,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="/templates" className="text-sm hover:underline">
-                  Palettes
+                  Templates
                 </Link>
               </li>
               <li>

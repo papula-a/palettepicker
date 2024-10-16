@@ -5,7 +5,7 @@ import { buttonVariants } from "./ui/button";
 
 const Header = () => {
   return (
-    <nav className="flex justify-between items-center px-6 py-2 bg-white shadow-md">
+    <nav className="flex justify-between items-center px-6 py-2 bg-white shadow-md rounded-2xl">
       {/* Logo */}
       <div className="w-2/12 flex justify-start">
         <Link href="/">
