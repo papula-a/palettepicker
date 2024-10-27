@@ -3,17 +3,25 @@ import localFont from "next/font/local";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "../styles/globals.css";
+import { Fredoka } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const fredoka = Fredoka({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
 });
-const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+// const geistSans = localFont({
+//   src: "../fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "../fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -24,6 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
+
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}>
         
           <Header />
@@ -32,6 +41,7 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
        
+
       </body>
     </html>
   );
