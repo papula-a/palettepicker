@@ -23,7 +23,7 @@ const Templates = () => {
               description="Facilitate buying and selling goods and services online with this responsive E-commerce template."
               imageSrc="/static/ecommerce.png"
               altText="E-commerce"
-              link="/e-commerce" 
+               linkHref="/e-commerce"
             />
             <Card
               title="BLOG WEBSITE"

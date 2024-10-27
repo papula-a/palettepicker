@@ -114,7 +114,7 @@ export default function Home() {
           </div>
           <div className="text-center">
             <Link
-              href="/template"
+              href="/templates"
               className={cn(
                 buttonVariants({ variant: "outline" }),
                 "bg-pink-200 hover:bg-pink-200 text-gray-800 font-semibold py-2 px-6 rounded-full"
