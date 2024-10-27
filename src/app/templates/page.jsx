@@ -23,13 +23,14 @@ const Templates = () => {
               description="Facilitate buying and selling goods and services online with this responsive E-commerce template."
               imageSrc="/static/ecommerce.png"
               altText="E-commerce"
-              link="/e-commerce" 
+               linkHref="/e-commerce"
             />
             <Card
               title="BLOG WEBSITE"
               description="Perfect for sharing articles and stories. This blog template is clean, customizable, and responsive."
               imageSrc="/static/blog.png"
               altText="Blog"
+              linkHref="/blog"
             />
             
             <Card
@@ -37,12 +38,14 @@ const Templates = () => {
               description="A sleek, modern template for displaying personal portfolios or creative works."
               imageSrc="/static/portfolio.png"
               altText="Portfolio"
+              linkHref="/portfolio"
             /> 
             <Card
               title="LANDING PAGE"
               description="This template is designed for single-page websites and product launches."
               imageSrc="/static/landing-page.png"
               altText="Landing Page"
+              linkHref="/landing-page"
             />
           </div>
         </div>
