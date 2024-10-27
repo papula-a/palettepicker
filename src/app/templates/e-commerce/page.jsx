@@ -1,8 +1,6 @@
 "use client"; // Required for Client Component
 
-import Wrapper from "@/components/Wrapper";
 import { useState } from "react";
-import ColorPicker from "@/components/ColorPicker"; // Importing the Color Picker
 
 const Ecommerce = () => {
   const [colors, setColors] = useState({
@@ -26,7 +24,7 @@ const Ecommerce = () => {
   ];
 
   return (
-    <Wrapper
+    <div
       className="min-h-screen flex flex-col items-center"
       style={{
         backgroundColor: colors.bgColor,
@@ -132,7 +130,7 @@ const Ecommerce = () => {
       </section>
 
   
-    </Wrapper>
+    </div>
   );
 };
 

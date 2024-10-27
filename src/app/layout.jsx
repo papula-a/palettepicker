@@ -1,4 +1,4 @@
-import Wrapper from "@/components/Wrapper";
+
 import localFont from "next/font/local";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -25,13 +25,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}>
-        <Wrapper className="flex flex-col min-h-screen">
+        
           <Header />
           <main className="flex-grow">
             {children} {/* Main content goes here */}
           </main>
           <Footer />
-        </Wrapper>
+       
       </body>
     </html>
   );
