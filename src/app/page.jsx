@@ -106,9 +106,9 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <TemplateButton text="E-COMMERCE WEBSITE" className="col-span-2" />
             <TemplateButton text="BLOG WEBSITE" className="col-span-2" />
-            <TemplateButton text="MEMBERSHIP WEBSITE" />
+            <TemplateButton text="PORTTFOLIO WEBSITE" />
             <TemplateButton
-              text="CORPORATE WEBSITE"
+              text="LANDING PAGE WEBSITE"
               className="col-span-2 md:col-span-3"
             />
           </div>
