@@ -24,14 +24,12 @@ const Ecommerce = () => {
   ];
 
   return (
-
     <div
       className="min-h-screen flex flex-col items-center"
       style={{
         backgroundColor: colors.bgColor,
       }}
-
-
+    >
       {/* Hero Section */}
       <section
         className="hero-section w-full bg-cover bg-center py-28 flex items-center justify-center"
@@ -46,10 +44,8 @@ const Ecommerce = () => {
           >
             Elevate Your Living Space
           </h1>
-
           <p className="mb-8 text-lg text-gray-700 leading-relaxed">
             Discover our curated selection of contemporary home decor.
-
           </p>
           <button
             className="px-6 py-3 text-base font-semibold rounded shadow-md hover:shadow-lg transition"
@@ -72,13 +68,11 @@ const Ecommerce = () => {
           >
             Featured Products
           </h2>
-
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {products.map((product) => (
               <div
                 key={product.id}
                 className="bg-white p-6 rounded-md shadow-lg hover:shadow-2xl transition"
-
               >
                 <img
                   src={product.image}
@@ -113,33 +107,26 @@ const Ecommerce = () => {
           >
             Explore Our Collections
           </h2>
-
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {collections.map((collection) => (
-
               <div
                 key={collection.id}
                 className="relative overflow-hidden rounded-md shadow-lg hover:shadow-2xl transition"
               >
-
                 <img
                   src={collection.image}
                   alt={collection.name}
                   className="w-full h-full object-cover"
                 />
-                <div
-                  className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-25"
-                >
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-25">
                   <h3 className="text-white text-2xl font-semibold">{collection.name}</h3>
                 </div>
-
-                <h3 className="text-white text-2xl font-semibold">
-                  Living Room
-                </h3>
-
-  
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
-
   );
 };
 
