@@ -1,3 +1,4 @@
+
 import localFont from "next/font/local";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -31,14 +32,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
-        className={cn(fredoka.className, "antialiased bg-gray-100")}
-      >
-        <Header />
-        <main className="flex-grow">
-          {children} {/* Main content goes here */}
-        </main>
-        <Footer />
+
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}>
+        
+          <Header />
+          <main className="flex-grow">
+            {children} {/* Main content goes here */}
+          </main>
+          <Footer />
+       
+
       </body>
     </html>
   );
