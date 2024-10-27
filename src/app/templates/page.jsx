@@ -15,7 +15,8 @@ const Templates = () => {
 
       <div className="min-h-screen py-10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> */}
             {/* Render each Card with unique content */}
             <Card
               title="E-COMMERCE WEBSITE"
@@ -29,24 +30,13 @@ const Templates = () => {
               imageSrc="/static/blog.png"
               altText="Blog"
             />
-            <Card
-              title="CORPORATE WEBSITE"
-              description="Showcase your company, services, and portfolio with this professional corporate website template."
-              imageSrc="/static/corporate.png"
-              altText="Corporate"
-            />
-            <Card
-              title="MEMBERSHIP WEBSITE"
-              description="Offer exclusive content to your subscribers with this modern membership site template."
-              imageSrc="/static/membership.png"
-              altText="Membership"
-            />
+            
             <Card
               title="PORTFOLIO WEBSITE"
               description="A sleek, modern template for displaying personal portfolios or creative works."
               imageSrc="/static/portfolio.png"
               altText="Portfolio"
-            />
+            /> 
             <Card
               title="LANDING PAGE"
               description="This template is designed for single-page websites and product launches."
