@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Card = ({ title, description, imageSrc, altText }) => {
   return (
@@ -6,10 +7,11 @@ const Card = ({ title, description, imageSrc, altText }) => {
       <div className="flex justify-center mb-4">
         <Image
           src={imageSrc}
-          height={24}
-          width={24}
+          height={96}
+          width={96}
           alt={altText}
           className="w-24 h-24"
+          priority
         />
       </div>
       <h2 className="text-center text-lg font-semibold mb-2">{title}</h2>
