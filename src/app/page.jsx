@@ -127,22 +127,30 @@ export default function Home() {
           SOME QUESTIONS YOU MIGHT HAVE
         </h2>
         <div className="space-y-4">
-          <FAQItem
-            question="What color should I choose for my website?"
-            answer="The best colors depend on your brand and audience. Generally, soft and neutral tones are safe and work well for a professional look, while bright colors can attract attention and convey a more energetic vibe."
-          />
-          <FAQItem
-            question="How do I save my favorite color combinations?"
-            answer="Once you've created a color combination you like, you can use the 'Save' button to store it in your saved combinations. This way, you can access and apply your saved colors anytime in your projects."
-          />
-          <FAQItem
-            question="Can I change the color palette anytime?"
-            answer="Yes, you can change the colors anytime! Our platform is designed to allow easy customization, so feel free to experiment with different colors to find the perfect match for your style."
-          />
-          <FAQItem
-            question="Are there template customization options?"
-            answer="Absolutely! Each template offers customization options to adjust colors, layouts, and other elements, so you can make it unique to your brand and style."
-          />
+          <div data-aos="zoom-in">
+            <FAQItem
+              question="What color should I choose for my website?"
+              answer="The best colors depend on your brand and audience. Generally, soft and neutral tones are safe and work well for a professional look, while bright colors can attract attention and convey a more energetic vibe."
+            />
+          </div>
+          <div data-aos="zoom-in" data-aos-delay="100">
+            <FAQItem
+              question="How do I save my favorite color combinations?"
+              answer="Once you've created a color combination you like, you can use the 'Save' button to store it in your saved combinations. This way, you can access and apply your saved colors anytime in your projects."
+            />
+          </div>
+          <div data-aos="zoom-in" data-aos-delay="200">
+            <FAQItem
+              question="Can I change the color palette anytime?"
+              answer="Yes, you can change the colors anytime! Our platform is designed to allow easy customization, so feel free to experiment with different colors to find the perfect match for your style."
+            />
+          </div>
+          <div data-aos="zoom-in" data-aos-delay="300">
+            <FAQItem
+              question="Are there template customization options?"
+              answer="Absolutely! Each template offers customization options to adjust colors, layouts, and other elements, so you can make it unique to your brand and style."
+            />
+          </div>
         </div>
       </div>
     </div>
