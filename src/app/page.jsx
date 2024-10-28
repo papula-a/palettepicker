@@ -7,6 +7,7 @@ import TemplateButton from "@/components/TemplateButton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import FAQItem from "@/components/FAQItem"; // Import FAQItem component
 
 export default function Home() {
   useEffect(() => {
@@ -126,22 +127,22 @@ export default function Home() {
           SOME QUESTIONS YOU MIGHT HAVE
         </h2>
         <div className="space-y-4">
-          <div className="bg-pink-200 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-            <span>What color should I choose for my website?</span>
-            <span>&#9660;</span>
-          </div>
-          <div className="bg-pink-200 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-            <span>How do I save my favorite color combinations?</span>
-            <span>&#9660;</span>
-          </div>
-          <div className="bg-pink-200 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-            <span>Can I change the color palette anytime?</span>
-            <span>&#9660;</span>
-          </div>
-          <div className="bg-pink-200 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-            <span>Are there template customization options?</span>
-            <span>&#9660;</span>
-          </div>
+          <FAQItem
+            question="What color should I choose for my website?"
+            answer="The best colors depend on your brand and audience. Generally, soft and neutral tones are safe and work well for a professional look, while bright colors can attract attention and convey a more energetic vibe."
+          />
+          <FAQItem
+            question="How do I save my favorite color combinations?"
+            answer="Once you've created a color combination you like, you can use the 'Save' button to store it in your saved combinations. This way, you can access and apply your saved colors anytime in your projects."
+          />
+          <FAQItem
+            question="Can I change the color palette anytime?"
+            answer="Yes, you can change the colors anytime! Our platform is designed to allow easy customization, so feel free to experiment with different colors to find the perfect match for your style."
+          />
+          <FAQItem
+            question="Are there template customization options?"
+            answer="Absolutely! Each template offers customization options to adjust colors, layouts, and other elements, so you can make it unique to your brand and style."
+          />
         </div>
       </div>
     </div>
