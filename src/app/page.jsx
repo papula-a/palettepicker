@@ -19,6 +19,7 @@ export default function Home() {
 
   return (
     <div>
+      {/* Hero Section */}
       <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-orange-100 to-white">
         {/* Left and Right SVG Shapes */}
         <svg
@@ -38,8 +39,8 @@ export default function Home() {
         </svg>
 
         {/* Content Container */}
-        <div className="relative z-10 flex items-center justify-center w-full h-full">
-          <div className="text-center px-4">
+        <div className="relative z-10 flex items-center justify-center w-full h-full px-4">
+          <div className="text-center">
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Color Your <span className="text-yellow-500">Vision</span>,
               <br />
@@ -98,14 +99,27 @@ export default function Home() {
           <h2 className="text-2xl font-semibold text-center mb-12">
             Our Templates
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <TemplateButton text="E-COMMERCE WEBSITE" className="col-span-2" />
-            <TemplateButton text="BLOG WEBSITE" className="col-span-2" />
-            <TemplateButton text="PORTFOLIO WEBSITE" />
-            <TemplateButton
-              text="LANDING PAGE WEBSITE"
-              className="col-span-2 md:col-span-3"
-            />
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8 justify-center">
+            <div data-aos="zoom-in" className="col-span-2 md:col-span-1">
+              <TemplateButton text="E-COMMERCE WEBSITE" />
+            </div>
+            <div
+              data-aos="zoom-in"
+              data-aos-delay="100"
+              className="col-span-2 md:col-span-1"
+            >
+              <TemplateButton text="BLOG WEBSITE" />
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="200">
+              <TemplateButton text="PORTFOLIO WEBSITE" />
+            </div>
+            <div
+              data-aos="zoom-in"
+              data-aos-delay="300"
+              className="col-span-2 md:col-span-1"
+            >
+              <TemplateButton text="LANDING PAGE WEBSITE" />
+            </div>
           </div>
           <div className="text-center">
             <Link
@@ -122,7 +136,7 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <div className="bg-white max-w-full mx-auto py-12 px-20">
+      <div className="bg-white max-w-full mx-auto py-12 px-4 sm:px-20">
         <h2 className="text-center text-xl font-semibold mb-8">
           SOME QUESTIONS YOU MIGHT HAVE
         </h2>
