@@ -7,6 +7,7 @@ import TemplateButton from "@/components/TemplateButton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import FAQSection from "@/components/FAQItem"; // Import the new FAQSection component
 
 export default function Home() {
   useEffect(() => {
@@ -121,29 +122,7 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <div className="bg-white max-w-full mx-auto py-12 px-20">
-        <h2 className="text-center text-xl font-semibold mb-8">
-          SOME QUESTIONS YOU MIGHT HAVE
-        </h2>
-        <div className="space-y-4">
-          <div className="bg-pink-200 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-            <span>What color should I choose for my website?</span>
-            <span>&#9660;</span>
-          </div>
-          <div className="bg-pink-200 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-            <span>How do I save my favorite color combinations?</span>
-            <span>&#9660;</span>
-          </div>
-          <div className="bg-pink-200 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-            <span>Can I change the color palette anytime?</span>
-            <span>&#9660;</span>
-          </div>
-          <div className="bg-pink-200 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-            <span>Are there template customization options?</span>
-            <span>&#9660;</span>
-          </div>
-        </div>
-      </div>
+      <FAQSection /> {/* Use the new FAQSection component here */}
     </div>
   );
 }
