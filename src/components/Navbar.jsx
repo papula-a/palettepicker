@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="hidden md:flex space-x-8">
+    <div className="flex space-x-8 text-center">
       <Link href="/" className="text-black hover:text-gray-600">
         Home
       </Link>
