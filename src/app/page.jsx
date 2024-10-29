@@ -7,7 +7,7 @@ import TemplateButton from "@/components/TemplateButton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import FAQSection from "@/components/FAQSection"; // Import the new FAQSection component
+import FAQSection from "@/components/FAQItem"; // Import the new FAQSection component
 
 export default function Home() {
   useEffect(() => {
