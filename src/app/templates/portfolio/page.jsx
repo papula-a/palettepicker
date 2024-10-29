@@ -50,17 +50,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-16 px-4 text-center">
-        <h2 className="text-4xl font-bold text-gray-800">Skills</h2>
-        <ul className="mt-4 text-lg text-gray-600 list-disc list-inside max-w-xl mx-auto">
-          <li>Exceptional Gymnastics Skills</li>
-          <li>Strong Competitive Spirit</li>
-          <li>Team Leadership</li>
-          <li>Public Speaking</li>
-          {/* Add more skills as necessary */}
-        </ul>
-      </section>
+    
 
       {/* Testimonials Section */}
       <section className="py-16 px-4 bg-gray-200 text-center">
@@ -68,20 +58,36 @@ const Portfolio = () => {
         <blockquote className="mt-4 italic text-gray-600">
           "Simone is a true inspiration and a role model for athletes everywhere."
         </blockquote>
+        
         <p className="mt-2 text-gray-700">- Coach Aimee Boorman</p>
+        <blockquote className="mt-4 italic text-gray-600">
+          "She truly shows how women can become unstoppable and are capable of almost anything. Alyaws amazed by her!!"
+        </blockquote>
+        <p className="mt-2 text-gray-700">- Diya Mustafa</p>
       </section>
 
       {/* Contact Section */}
       <section className="py-16 px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-800">Get in Touch</h2>
-        <form className="mt-8 max-w-xl mx-auto">
-          <input type="text" placeholder="Your Name" className="border rounded-lg px-4 py-2 w-full" required />
-          <input type="email" placeholder="Your Email" className="border rounded-lg px-4 py-2 w-full mt-4" required />
-          <textarea placeholder="Your Message" className="border rounded-lg px-4 py-2 w-full mt-4" required></textarea>
+        <form className="mt-8 max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+          <input 
+            type="text" 
+            placeholder="Your Name" 
+            className="border rounded-lg px-4 py-2 w-full mb-4" 
+            disabled // Disabling input
+          />
+          <input 
+            type="email" 
+            placeholder="Your Email" 
+            className="border rounded-lg px-4 py-2 w-full mb-4" 
+            disabled // Disabling input
+          />
+          <textarea placeholder="Your Message" className="border rounded-lg px-4 py-2 w-full mb-4" disabled ></textarea>
           <button type="submit" className="mt-4 bg-blue-500 text-white rounded-lg px-6 py-2 transition-colors hover:bg-blue-600">Send</button>
         </form>
       </section>
 
+      
     </div>
   );
 };
