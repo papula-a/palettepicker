@@ -7,7 +7,7 @@ const Portfolio = () => {
     <div className="bg-gray-100">
 
       {/* Hero Section */}
-      <section className="bg-white text-center py-20">
+      <section className="bg-white text-center pt-0">
         <img 
           src="/static/simone-biles-hero.jpg" 
           alt="Simone Biles" 
@@ -50,18 +50,15 @@ const Portfolio = () => {
         </div>
       </section>
 
-    
-
       {/* Testimonials Section */}
       <section className="py-16 px-4 bg-gray-200 text-center">
         <h2 className="text-4xl font-bold text-gray-800">What People Say</h2>
         <blockquote className="mt-4 italic text-gray-600">
           "Simone is a true inspiration and a role model for athletes everywhere."
         </blockquote>
-        
         <p className="mt-2 text-gray-700">- Coach Aimee Boorman</p>
         <blockquote className="mt-4 italic text-gray-600">
-          "She truly shows how women can become unstoppable and are capable of almost anything. Alyaws amazed by her!!"
+          "She truly shows how women can become unstoppable and are capable of almost anything. Always amazed by her!!"
         </blockquote>
         <p className="mt-2 text-gray-700">- Diya Mustafa</p>
       </section>
@@ -87,7 +84,6 @@ const Portfolio = () => {
         </form>
       </section>
 
-      
     </div>
   );
 };
