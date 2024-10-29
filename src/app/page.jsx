@@ -7,11 +7,7 @@ import TemplateButton from "@/components/TemplateButton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-<<<<<<< HEAD
-import FAQSection from "@/components/FAQItem"; // Import the new FAQSection component
-=======
-import FAQItem from "@/components/FAQItem"; // Import FAQItem component
->>>>>>> 7f6990b48b867a5926556dcb6c1f09beabf255fd
+import FAQSection from "@/components/FAQSection"; // Import the new FAQSection component
 
 export default function Home() {
   useEffect(() => {
@@ -23,7 +19,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero Section */}
       <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-orange-100 to-white">
         {/* Left and Right SVG Shapes */}
         <svg
@@ -43,8 +38,8 @@ export default function Home() {
         </svg>
 
         {/* Content Container */}
-        <div className="relative z-10 flex items-center justify-center w-full h-full px-4">
-          <div className="text-center">
+        <div className="relative z-10 flex items-center justify-center w-full h-full">
+          <div className="text-center px-4">
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Color Your <span className="text-yellow-500">Vision</span>,
               <br />
@@ -103,27 +98,14 @@ export default function Home() {
           <h2 className="text-2xl font-semibold text-center mb-12">
             Our Templates
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8 justify-center">
-            <div data-aos="zoom-in" className="col-span-2 md:col-span-1">
-              <TemplateButton text="E-COMMERCE WEBSITE" />
-            </div>
-            <div
-              data-aos="zoom-in"
-              data-aos-delay="100"
-              className="col-span-2 md:col-span-1"
-            >
-              <TemplateButton text="BLOG WEBSITE" />
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="200">
-              <TemplateButton text="PORTFOLIO WEBSITE" />
-            </div>
-            <div
-              data-aos="zoom-in"
-              data-aos-delay="300"
-              className="col-span-2 md:col-span-1"
-            >
-              <TemplateButton text="LANDING PAGE WEBSITE" />
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <TemplateButton text="E-COMMERCE WEBSITE" className="col-span-2" />
+            <TemplateButton text="BLOG WEBSITE" className="col-span-2" />
+            <TemplateButton text="PORTFOLIO WEBSITE" />
+            <TemplateButton
+              text="LANDING PAGE WEBSITE"
+              className="col-span-2 md:col-span-3"
+            />
           </div>
           <div className="text-center">
             <Link
@@ -140,41 +122,7 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-<<<<<<< HEAD
       <FAQSection /> {/* Use the new FAQSection component here */}
-=======
-      <div className="bg-white max-w-full mx-auto py-12 px-4 sm:px-20">
-        <h2 className="text-center text-xl font-semibold mb-8">
-          SOME QUESTIONS YOU MIGHT HAVE
-        </h2>
-        <div className="space-y-4">
-          <div data-aos="zoom-in">
-            <FAQItem
-              question="What color should I choose for my website?"
-              answer="The best colors depend on your brand and audience. Generally, soft and neutral tones are safe and work well for a professional look, while bright colors can attract attention and convey a more energetic vibe."
-            />
-          </div>
-          <div data-aos="zoom-in" data-aos-delay="100">
-            <FAQItem
-              question="How do I save my favorite color combinations?"
-              answer="Once you've created a color combination you like, you can use the 'Save' button to store it in your saved combinations. This way, you can access and apply your saved colors anytime in your projects."
-            />
-          </div>
-          <div data-aos="zoom-in" data-aos-delay="200">
-            <FAQItem
-              question="Can I change the color palette anytime?"
-              answer="Yes, you can change the colors anytime! Our platform is designed to allow easy customization, so feel free to experiment with different colors to find the perfect match for your style."
-            />
-          </div>
-          <div data-aos="zoom-in" data-aos-delay="300">
-            <FAQItem
-              question="Are there template customization options?"
-              answer="Absolutely! Each template offers customization options to adjust colors, layouts, and other elements, so you can make it unique to your brand and style."
-            />
-          </div>
-        </div>
-      </div>
->>>>>>> 7f6990b48b867a5926556dcb6c1f09beabf255fd
     </div>
   );
 }
