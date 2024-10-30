@@ -16,7 +16,7 @@ const Templates = () => {
 
       <div className="min-h-screen py-10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8"> {/* Set to 2 columns with spacing */}
             {/* Render each Card with unique content */}
             <Card
               title="E-COMMERCE WEBSITE"
