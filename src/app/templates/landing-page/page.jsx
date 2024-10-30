@@ -9,7 +9,7 @@ const LandingPage = () => {
     <div className="bg-gradient-to-b from-blue-300 to-purple-400"> {/* Lighter gradient colors */}
 
       {/* Hero Section */}
-      <section className="text-center py-20 relative">
+      <section className="text-center py-40 relative"> {/* Increased padding to give a taller hero section */}
         <div className="absolute inset-0">
           <svg className="w-full h-full" viewBox="0 0 1440 320">
             <path fill="#ffffff" fillOpacity="0.5" d="M0,128L60,101.3C120,75,240,21,360,10.7C480,0,600,32,720,69.3C840,107,960,149,1080,160C1200,171,1320,149,1380,138.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
@@ -27,17 +27,17 @@ const LandingPage = () => {
         <h2 className="text-4xl font-bold text-center text-gray-800">Why Choose Us?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {/* Feature Item */}
-          <div className="border rounded-lg p-6 shadow-lg">
+          <div className="bg-green-100 border rounded-lg p-6 shadow-lg"> {/* Changed background color */}
             <h3 className="text-2xl font-semibold text-gray-800">Guided Sessions</h3>
             <p className="mt-2 text-gray-600">Experience our expert-led meditation sessions that cater to all levels.</p>
           </div>
           {/* Feature Item */}
-          <div className="border rounded-lg p-6 shadow-lg">
+          <div className="bg-yellow-100 border rounded-lg p-6 shadow-lg"> {/* Changed background color */}
             <h3 className="text-2xl font-semibold text-gray-800">Flexible Scheduling</h3>
             <p className="mt-2 text-gray-600">Join sessions that fit your schedule, whether you're at home or on the go.</p>
           </div>
           {/* Feature Item */}
-          <div className="border rounded-lg p-6 shadow-lg">
+          <div className="bg-pink-100 border rounded-lg p-6 shadow-lg"> {/* Changed background color */}
             <h3 className="text-2xl font-semibold text-gray-800">Community Support</h3>
             <p className="mt-2 text-gray-600">Connect with fellow meditators and share your journey towards mindfulness.</p>
           </div>
@@ -69,7 +69,7 @@ const LandingPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 px-4 bg-blue-50 text-center relative"> {/* Softer blue background */}
+      <section className="py-40 px-4 bg-blue-50 text-center relative"> {/* Adjusted padding */}
         <div className="absolute inset-0">
           <svg className="w-full h-full" viewBox="0 0 1440 320">
             <path fill="#ffffff" d="M0,128L60,101.3C120,75,240,21,360,10.7C480,0,600,32,720,69.3C840,107,960,149,1080,160C1200,171,1320,149,1380,138.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
@@ -85,13 +85,6 @@ const LandingPage = () => {
         </blockquote>
         <p className="mt-2 text-gray-700 relative z-10">- Mark Thompson</p>
       </section>
-
-      {/* Call to Action Section */}
-      {/* <section className="py-16 px-4 text-center">
-        <h2 className="text-4xl font-bold text-gray-800">Ready to Start Your Journey?</h2>
-        <p className="mt-4 text-lg text-gray-600">Sign up today and discover the benefits of meditation!</p>
-        <a href="#contact" className="mt-6 inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">Join Now</a>
-      </section> */}
 
     </div>
   );
