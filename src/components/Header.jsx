@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./Navbar";
-import { buttonVariants } from "./ui/button";
 import { HiMenu, HiX } from "react-icons/hi";
 
 const Header = () => {
@@ -28,26 +26,20 @@ const Header = () => {
       </div>
 
       {/* Navbar for larger screens */}
-      <div className="hidden md:flex flex-1 justify-center">
-        <Navbar />
+      <div className="hidden md:flex flex-1 justify-center"> {/* Centering Navbar */}
+        <div className="flex justify-center space-x-8 ml-4"> {/* Added ml-4 to shift right */}
+          <Link href="/" className="text-gray-800 hover:text-orange-500">Home</Link>
+          <Link href="/templates" className="text-gray-800 hover:text-orange-500">Templates</Link>
+          <Link href="/about" className="text-gray-800 hover:text-orange-500">About Us</Link>
+        </div>
       </div>
 
-      {/* User Profile Icon and Burger Menu */}
+      {/* User Profile Icon and Links on the right */}
       <div className="flex items-center space-x-4">
         {/* User Links for larger screens */}
         <div className="hidden md:flex space-x-4">
-          <Link
-            href="/sign-in"
-            className={buttonVariants({ variant: "outline" })}
-          >
-            Sign in
-          </Link>
-          <Link
-            href="/sign-up"
-            className={buttonVariants({ variant: "outline" })}
-          >
-            Sign up
-          </Link>
+          <Link href="/sign-in" className="text-gray-800 hover:text-orange-500">Log In</Link>
+          <Link href="/sign-up" className="text-gray-800 hover:text-orange-500">Sign Up</Link>
         </div>
 
         {/* Burger Menu Icon for mobile */}
@@ -63,20 +55,12 @@ const Header = () => {
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white shadow-md md:hidden">
-          <Navbar />
           <div className="flex flex-col items-center space-y-4 py-4">
-            <Link
-              href="/sign-in"
-              className={buttonVariants({ variant: "outline" })}
-            >
-              Sign in
-            </Link>
-            <Link
-              href="/sign-up"
-              className={buttonVariants({ variant: "outline" })}
-            >
-              Sign up
-            </Link>
+            <Link href="/" className="text-gray-800 hover:text-orange-500">Home</Link>
+            <Link href="/templates" className="text-gray-800 hover:text-orange-500">Templates</Link>
+            <Link href="/about" className="text-gray-800 hover:text-orange-500">About Us</Link>
+            <Link href="/sign-in" className="text-gray-800 hover:text-orange-500">Log In</Link>
+            <Link href="/sign-up" className="text-gray-800 hover:text-orange-500">Sign Up</Link>
           </div>
         </div>
       )}
