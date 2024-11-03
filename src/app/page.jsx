@@ -108,7 +108,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Updated Templates Section */}
+      {/* Updated Templates Section without Text */}
       <div className="bg-gradient-to-b from-[#c198bb] to-[#fdd7ae] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-center mb-12 text-black">
@@ -127,12 +127,7 @@ export default function Home() {
                 height={48}
                 className="mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">E-commerce Website</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                This is the e-commerce page template where you can test and
-                apply different color schemes to see how your online store could
-                look.
-              </p>
+              <h3 className="text-lg font-semibold">E-commerce Website</h3>
             </div>
 
             {/* Template 2 */}
@@ -148,12 +143,7 @@ export default function Home() {
                 height={48}
                 className="mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Blog Website</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                This is the blog page template where you can experiment with
-                color themes to enhance the reading experience for your
-                audience.
-              </p>
+              <h3 className="text-lg font-semibold">Blog Website</h3>
             </div>
 
             {/* Template 3 */}
@@ -169,11 +159,7 @@ export default function Home() {
                 height={48}
                 className="mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Portfolio Website</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                This is the portfolio page template where you can try out color
-                combinations to create a personalized showcase of your work.
-              </p>
+              <h3 className="text-lg font-semibold">Portfolio Website</h3>
             </div>
 
             {/* Template 4 */}
@@ -189,11 +175,7 @@ export default function Home() {
                 height={48}
                 className="mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Landing Page</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                This is the landing page template where you can apply different
-                color palettes to make a strong first impression.
-              </p>
+              <h3 className="text-lg font-semibold">Landing Page</h3>
             </div>
           </div>
 
