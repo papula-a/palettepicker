@@ -109,7 +109,7 @@ export default function Home() {
       </div>
 
       {/* Updated Templates Section without Text */}
-      <div className="bg-gradient-to-b from-purple-200 to-pink-100 py-16">
+      <div className="bg-gradient-to-b from-purple-100 to-pink-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-center mb-12 text-black">
             Our Templates

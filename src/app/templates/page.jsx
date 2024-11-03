@@ -3,12 +3,12 @@ import Card from "@/components/Card";
 const Templates = () => {
   return (
     <div>
-      <div className="flex items-center justify-center w-full h-64 bg-gradient-to-r from-purple-600 to-pink-300">
-        <div className="text-center text-lg text-white">
+      <div className="flex items-center justify-center w-full h-64 bg-gradient-to-r from-pink-400 to-purple-200">
+        <div className="text-center text-lg text-purple-950">
           <h1 className="text-2xl font-bold m-3">OUR PRE-MADE TEMPLATES</h1>
           <p className="text-lg m-3">
             Try your color combinations on{" "}
-            <span className="text-yellow-500 font-semibold">ready-to-use</span>{" "}
+            <span className="text-pink-600 font-semibold">ready-to-use</span>{" "}
             templates
           </p>
         </div>
