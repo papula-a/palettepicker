@@ -1,11 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"; // Make sure this is imported
 
 const Footer = () => {
   return (
-    <footer className="bg-[#A881A7] text-white pt-8">
-      {" "}
-      {/* Added top padding here */}
+    <footer className="bg-gradient-to-r from-purple-400 to-pink-400 text-white pt-8">
       <div className="px-6 py-6">
         <div className="container mx-auto flex flex-col md:flex-row justify-between">
           {/* Logo and description */}
@@ -19,20 +17,17 @@ const Footer = () => {
           </div>
 
           <div className="mb-6 md:mb-0 flex flex-col items-center md:items-start">
-            <h5 className="text-lg font-bold mb-3 text-[#eab308]">
+            <h5 className="text-lg font-bold mb-3 text-[#ffffff]">
               PalettePicker
-            </h5>{" "}
-            {/* Heading color */}
+            </h5>
             <p className="text-sm mt-2">
               Color your vision, Transform your website
-            </p>{" "}
-            {/* Additional margin for positioning */}
+            </p>
           </div>
 
           {/* Contact Info */}
           <div className="mb-6 md:mb-0 flex flex-col items-center md:items-start">
-            <h5 className="text-lg font-bold mb-3 text-[#eab308]">Contact</h5>{" "}
-            {/* Heading color */}
+            <h5 className="text-lg font-bold mb-3 text-[#ffffff]">Contact</h5>
             <div className="text-sm mt-2">
               <div className="m-2">📧 example@gmail.com</div>
               <div>📞 0770 123 4567</div>
@@ -41,8 +36,7 @@ const Footer = () => {
 
           {/* Links */}
           <div className="flex flex-col items-center md:items-start">
-            <h5 className="text-lg font-bold mb-3 text-[#eab308]">Links</h5>{" "}
-            {/* Heading color */}
+            <h5 className="text-lg font-bold mb-3 text-[#ffffff]">Links</h5>
             <ul className="mt-2">
               <li>
                 <Link href="/" className="text-sm hover:underline">
@@ -63,7 +57,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#3F1B62] p-3 text-center text-xs">
+      <div className="bg-purple-800 p-3 text-center text-xs">
         © 2024 PalettePicker. All rights reserved.
       </div>
     </footer>
