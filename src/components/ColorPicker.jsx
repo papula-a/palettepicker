@@ -1,43 +1,45 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-const ColorPicker = ({ onColorChange }) => {
-  const [primaryColor, setPrimaryColor] = useState("#050315");
-  const [secondaryColor, setSecondaryColor] = useState("#2f27ce");
-  const [bgColor, setBgColor] = useState("#fbfbfe");
+const ColorPicker = ({ colors, setColors }) => {
+  const [currentColorType, setCurrentColorType] = useState(null); // To track which color type is currently being edited
 
-  // Update colors in parent component whenever any color changes
-  useEffect(() => {
-    onColorChange({ primaryColor, secondaryColor, bgColor });
-  }, [primaryColor, secondaryColor, bgColor]);
+  const handleColorChange = (type, color) => {
+    setColors(prevColors => ({
+      ...prevColors,
+      [type]: color,
+    }));
+  };
+
+  const handleCircleClick = (type) => {
+    setCurrentColorType(type);
+    const colorInput = document.getElementById(`color-input-${type}`);
+    colorInput.click(); // Simulate click on the hidden input
+  };
 
   return (
-    <div className="p-4 border-t border-gray-300 mt-10">
-      <h2 className="text-center font-semibold mb-4">Customize Colors</h2>
-      <div className="flex justify-around mb-4">
-        <div>
-          <label>Primary Color:</label>
-          <input
-            type="color"
-            value={primaryColor}
-            onChange={(e) => setPrimaryColor(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Secondary Color:</label>
-          <input
-            type="color"
-            value={secondaryColor}
-            onChange={(e) => setSecondaryColor(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Background Color:</label>
-          <input
-            type="color"
-            value={bgColor}
-            onChange={(e) => setBgColor(e.target.value)}
-          />
-        </div>
+    <div className="flex flex-col mt-4">
+      <h4 className="text-sm font-medium">Select Colors</h4>
+
+      {/* Color Circles for Primary, Secondary, Background, and Text */}
+      <div className="flex space-x-4">
+        {['primaryColor', 'secondaryColor', 'bgColor'].map((type) => (
+          <div key={type} className="flex flex-col items-center">
+            <span className="font-semibold">{type.charAt(0).toUpperCase() + type.slice(1).replace('Color', '')}:</span>
+            <div
+              onClick={() => handleCircleClick(type)}
+              className="w-12 h-12 rounded-full cursor-pointer border-2 border-gray-300"
+              style={{ backgroundColor: colors[type] }}
+            />
+            <input
+              type="color"
+              id={`color-input-${type}`}
+              value={colors[type]}
+              onChange={(e) => handleColorChange(type, e.target.value)}
+              className="hidden"
+              onBlur={() => setCurrentColorType(null)} // Optionally reset currentColorType on blur
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

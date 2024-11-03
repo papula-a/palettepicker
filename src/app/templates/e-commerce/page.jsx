@@ -1,6 +1,7 @@
 "use client"; // Required for Client Component
 
 import { useState } from "react";
+import ColorPicker from "@/components/ColorPicker";
 
 const Ecommerce = () => {
   const [colors, setColors] = useState({
