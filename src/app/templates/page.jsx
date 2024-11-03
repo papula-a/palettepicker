@@ -16,10 +16,8 @@ const Templates = () => {
 
       <div className="min-h-screen py-10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {" "}
-            {/* Set to 2 columns with spacing */}
-            {/* Render each Card with unique content */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Set to always have 2 columns with spacing */}
             <Card
               title="E-COMMERCE WEBSITE"
               description="Facilitate buying and selling goods and services online with this responsive E-commerce template."
