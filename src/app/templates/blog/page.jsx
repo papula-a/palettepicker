@@ -1,4 +1,4 @@
-"use client"; // Marking this component as a Client Component
+"use client"; // Required for Client Component
 
 import { useState } from "react";
 import FloatingColorPicker from "@/components/FloatingColorPicker";
@@ -10,8 +10,6 @@ const Blog = () => {
     bgColor: "#f9f9f9", // Light background color
   });
 
-  const [isPickerOpen, setIsPickerOpen] = useState(false); // State for color picker visibility
-
   const blogPosts = [
     {
       id: 1,
@@ -22,7 +20,32 @@ const Blog = () => {
         "Explore the techniques behind my latest collection, inspired by personal reflections and nature.",
       image: "/static/winnie-art1.jpg",
     },
-    // ... other blog posts
+    {
+      id: 2,
+      title: "Nature as Muse",
+      date: "October 25, 2024",
+      author: "Winnie Au",
+      excerpt:
+        "How the natural world fuels my creativity and informs my artistic process.",
+      image: "/static/winnie-art2.jpg",
+    },
+    {
+      id: 3,
+      title: "Color and Emotion",
+      date: "October 22, 2024",
+      author: "Winnie Au",
+      excerpt: "An exploration of how color influences emotion in my artwork.",
+      image: "/static/winnie-art3.jpg",
+    },
+    {
+      id: 4,
+      title: "Artistic Sustainability",
+      date: "October 20, 2024",
+      author: "Winnie Au",
+      excerpt:
+        "The importance of sustainability in art and how I incorporate it into my practice.",
+      image: "/static/winnie-art4.jpg",
+    },
   ];
 
   return (
@@ -52,7 +75,7 @@ const Blog = () => {
             <img
               src={blogPosts[0].image}
               alt={blogPosts[0].title}
-              className="w-full h-96 object-cover"
+              className="w-full h-96 object-cover" // Increased height to h-96
             />
             <div className="p-6">
               <h3
@@ -93,7 +116,7 @@ const Blog = () => {
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-60 object-cover"
+                className="w-full h-60 object-cover" // Increased height to h-60
               />
               <div className="p-4">
                 <h3
@@ -127,11 +150,27 @@ const Blog = () => {
           Winnie Au's Book
         </h2>
         <div className="container mx-auto bg-white rounded-lg shadow-lg p-6 flex">
+          {/* Text Content */}
           <div className="flex-1 pr-4">
             <h3 className="text-2xl font-bold mb-2">Cone of Shame</h3>
             <p className="text-gray-700 mb-4">
               "Cone of Shame" is an exploration of the emotional complexities and
-              societal perceptions of vulnerability and shame...
+              societal perceptions of vulnerability and shame. Through a combination
+              of evocative illustrations and insightful narratives, Winnie Au takes
+              readers on a journey that challenges the stigma associated with
+              vulnerability.
+            </p>
+            <p className="text-gray-700 mb-4">
+              This book not only reflects the artist's unique perspective but also
+              encourages readers to embrace their imperfections and recognize the
+              beauty in vulnerability. It is a powerful reminder that shame can be a
+              shared experience, inviting conversations that foster understanding and
+              empathy.
+            </p>
+            <p className="text-gray-700 mb-4">
+              Perfect for art enthusiasts and anyone interested in personal growth,
+              "Cone of Shame" serves as both a creative inspiration and a source of
+              comfort.
             </p>
             <a
               href="#"
@@ -140,17 +179,35 @@ const Blog = () => {
               Learn more or purchase...
             </a>
           </div>
+
+          {/* Image Container */}
           <div className="flex-none w-32 h-32">
             <img
               src="/static/cone-of-shame.jpg" 
               alt="Cone of Shame"
-              className="w-full h-full object-cover rounded"
+              className="w-full h-full object-cover rounded" // Adjust size as needed
             />
           </div>
         </div>
       </section>
+
+    {/* Subscribe Button Section */}
+<section className="py-16 text-center">
+  <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+  <p className="text-gray-600 mb-6">Stay updated with the latest posts and news!</p>
+  <button
+    className="bg-secondaryColor text-black px-6 py-3 rounded-lg hover:bg-opacity-80 transition" // Changed text color to black
+    style={{
+      backgroundColor: colors.secondaryColor,
+      color: "#ffffff",
+    }}
+  >
+    Subscribe
+  </button>
+</section>
+
+      {/* Floating Color Picker */}
       <FloatingColorPicker colors={colors} setColors={setColors} />
-    
     </div>
   );
 };

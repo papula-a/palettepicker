@@ -1,11 +1,20 @@
-// src/portfolio/page.jsx
+"use client"; // Required for Client Component
 
-import React from 'react';
+import React, { useState } from 'react';
+import FloatingColorPicker from "@/components/FloatingColorPicker"; // Ensure the path is correct
 
 const Portfolio = () => {
-  return (
-    <div className="bg-gray-100">
+  // Initialize color states
+  const [colors, setColors] = useState({
+    primaryColor: "#ffffff", // Default primary color for card backgrounds
+    secondaryColor: "#4CAF50", // Default secondary color (for buttons)
+    textColor: "#333333", // Default text color
+    bgColor: "#F4F4F9", // Default background color
+  });
 
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: colors.bgColor }}>
+      
       {/* Hero Section */}
       <section className="bg-white text-center pt-0">
         <img 
@@ -13,9 +22,13 @@ const Portfolio = () => {
           alt="Simone Biles" 
           className="w-full h-96 object-cover mb-4" 
         />
-        <h1 className="text-5xl font-bold text-gray-800">Simone Biles</h1>
+        <h1 className="text-5xl font-bold text-gray-800" style={{ color: colors.primaryColor }}>
+          Simone Biles
+        </h1>
         <p className="mt-4 text-xl text-gray-600">World Champion Gymnast and Olympic Gold Medalist</p>
-        <a href="#projects" className="mt-6 inline-block bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">View Achievements</a>
+        <a href="#projects" className="mt-6 inline-block" style={{ backgroundColor: colors.secondaryColor, color: "#ffffff", padding: "12px 24px", borderRadius: "8px", transition: "background-color 0.3s" }}>
+          View Achievements
+        </a>
       </section>
 
       {/* About Me Section */}
@@ -80,10 +93,12 @@ const Portfolio = () => {
             disabled // Disabling input
           />
           <textarea placeholder="Your Message" className="border rounded-lg px-4 py-2 w-full mb-4" disabled ></textarea>
-          <button type="submit" className="mt-4 bg-blue-500 text-white rounded-lg px-6 py-2 transition-colors hover:bg-blue-600">Send</button>
+          <button type="submit" className="mt-4" style={{ backgroundColor: colors.secondaryColor, color: "#ffffff", padding: "12px 24px", borderRadius: "8px", transition: "background-color 0.3s" }}>Send</button>
         </form>
       </section>
 
+      {/* Floating Color Picker */}
+      <FloatingColorPicker colors={colors} setColors={setColors} />
     </div>
   );
 };

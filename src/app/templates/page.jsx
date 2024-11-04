@@ -1,5 +1,6 @@
 import Card from "@/components/Card";
 
+
 const Templates = () => {
   return (
     <div>
@@ -49,7 +50,10 @@ const Templates = () => {
           </div>
         </div>
       </div>
+    
+    
     </div>
+    
   );
 };
 
