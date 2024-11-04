@@ -17,7 +17,7 @@ const Footer = () => {
           </div>
 
           <div className="mb-6 md:mb-0 flex flex-col items-center md:items-start">
-            <h5 className="text-lg font-bold mb-3 text-[#ffffff]">
+            <h5 className="text-lg font-bold mb-3 text-orange-200">
               PalettePicker
             </h5>
             <p className="text-sm mt-2">
@@ -27,7 +27,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="mb-6 md:mb-0 flex flex-col items-center md:items-start">
-            <h5 className="text-lg font-bold mb-3 text-[#ffffff]">Contact</h5>
+            <h5 className="text-lg font-bold mb-3 text-orange-200">Contact</h5>
             <div className="text-sm mt-2">
               <div className="m-2">📧 example@gmail.com</div>
               <div>📞 0770 123 4567</div>
@@ -36,7 +36,7 @@ const Footer = () => {
 
           {/* Links */}
           <div className="flex flex-col items-center md:items-start">
-            <h5 className="text-lg font-bold mb-3 text-[#ffffff]">Links</h5>
+            <h5 className="text-lg font-bold mb-3 text-orange-200">Links</h5>
             <ul className="mt-2">
               <li>
                 <Link href="/" className="text-sm hover:underline">
