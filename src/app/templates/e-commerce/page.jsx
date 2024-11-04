@@ -1,7 +1,8 @@
 "use client"; // Required for Client Component
 
-import { useState } from "react";
 import FloatingColorPicker from "@/components/FloatingColorPicker";
+import Image from "next/image";
+import { useState } from "react";
 
 const Ecommerce = () => {
   const [colors, setColors] = useState({
@@ -9,7 +10,7 @@ const Ecommerce = () => {
     secondaryColor: "#4CAF50", // Default secondary color
     bgColor: "#F4F4F9", // Default background color
   });
-  
+
   // State to control visibility of the color picker
   const [isPickerOpen, setIsPickerOpen] = useState(false);
 
@@ -78,12 +79,17 @@ const Ecommerce = () => {
                 key={product.id}
                 className="bg-white p-6 rounded-md shadow-lg hover:shadow-2xl transition"
               >
-                <img
+                <Image
                   src={product.image}
+                  width={300}
+                  height={300}
                   alt={product.name}
                   className="w-full h-56 object-cover rounded mb-4"
                 />
-                <h3 className="text-lg font-medium mb-1" style={{ color: colors.primaryColor }}>
+                <h3
+                  className="text-lg font-medium mb-1"
+                  style={{ color: colors.primaryColor }}
+                >
                   {product.name}
                 </h3>
                 <p className="text-gray-500 mb-4">{product.price}</p>
@@ -117,13 +123,17 @@ const Ecommerce = () => {
                 key={collection.id}
                 className="relative overflow-hidden rounded-md shadow-lg hover:shadow-2xl transition"
               >
-                <img
+                <Image
                   src={collection.image}
+                  width={300}
+                  height={300}
                   alt={collection.name}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-25">
-                  <h3 className="text-white text-2xl font-semibold">{collection.name}</h3>
+                  <h3 className="text-white text-2xl font-semibold">
+                    {collection.name}
+                  </h3>
                 </div>
               </div>
             ))}

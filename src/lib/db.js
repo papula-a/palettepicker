@@ -1,19 +1,15 @@
-import mysql from 'mysql2/promise';
+import { PrismaClient } from "@prisma/client";
 
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'diyapapula',
-    database: 'color_palette_db',
-});
+const prismaClientSingleton = () => {
+  return new PrismaClient();
+};
 
-pool.getConnection()
-    .then(conn => {
-        console.log("Database connection successful!");
-        conn.release();
-    })
-    .catch(err => {
-        console.error("Database connection failed:", err);
-    });
+// Check if `globalThis` already has a `prismaGlobal` property; if not, initialize it
+const prisma = globalThis.prismaGlobal || prismaClientSingleton();
 
-export default pool;
+export default prisma;
+
+// In development mode, attach `prisma` to `globalThis` to ensure a singleton
+if (process.env.NODE_ENV !== "production") {
+  globalThis.prismaGlobal = prisma;
+}

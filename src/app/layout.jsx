@@ -1,9 +1,8 @@
-import localFont from "next/font/local";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import "../styles/globals.css";
+import { AuthProvider } from "@/components/AuthProvider";
+import HeaderWithSession from "@/components/HeaderWithSession";
 import { Fredoka } from "next/font/google";
-import { cn } from "@/lib/utils";
+import Footer from "../components/Footer";
+import "../styles/globals.css";
 
 const fredoka = Fredoka({
   weight: "400",
@@ -18,14 +17,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <Header />
-        <main className="flex-grow">
-          {children} {/* Main content goes here */}
-        </main>
-        <Footer />
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body>
+          {/* <Header /> */}
+          <HeaderWithSession />
+          <main className="flex-grow">
+            {children} {/* Main content goes here */}
+          </main>
+          <Footer />
+        </body>
+      </html>
+    </AuthProvider>
   );
 }

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link"; // Make sure this is imported
 
 export default function AboutUs() {
   return (

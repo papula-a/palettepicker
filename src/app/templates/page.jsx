@@ -1,6 +1,5 @@
 import Card from "@/components/Card";
 
-
 const Templates = () => {
   return (
     <div>
@@ -24,36 +23,33 @@ const Templates = () => {
               description="Facilitate buying and selling goods and services online with this responsive E-commerce template."
               imageSrc="/static/ecommerce.png"
               altText="E-commerce"
-              linkHref="/e-commerce"
+              linkHref="/templates/e-commerce"
             />
             <Card
               title="BLOG WEBSITE"
               description="Perfect for sharing articles and stories. This blog template is clean, customizable, and responsive."
               imageSrc="/static/blog.png"
               altText="Blog"
-              linkHref="/blog"
+              linkHref="/templates/blog"
             />
             <Card
               title="PORTFOLIO WEBSITE"
               description="A sleek, modern template for displaying personal portfolios or creative works."
               imageSrc="/static/portfolio.png"
               altText="Portfolio"
-              linkHref="/portfolio"
+              linkHref="/templates/portfolio"
             />
             <Card
               title="LANDING PAGE"
               description="This template is designed for single-page websites and product launches."
               imageSrc="/static/landing-page.png"
               altText="Landing Page"
-              linkHref="/landing-page"
+              linkHref="/templates/landing-page"
             />
           </div>
         </div>
       </div>
-    
-    
     </div>
-    
   );
 };
 

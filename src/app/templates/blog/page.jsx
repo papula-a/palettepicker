@@ -1,7 +1,8 @@
 "use client"; // Required for Client Component
 
-import { useState } from "react";
 import FloatingColorPicker from "@/components/FloatingColorPicker";
+import Image from "next/image";
+import { useState } from "react";
 
 const Blog = () => {
   const [colors, setColors] = useState({
@@ -57,7 +58,7 @@ const Blog = () => {
       <header className="w-full bg-white shadow">
         <div className="container mx-auto px-4 py-6 flex justify-center">
           <h1 className="text-4xl font-bold text-gray-800">
-            Winnie Au's Art Blog
+            Winnie Au&apos;s Art Blog
           </h1>
         </div>
       </header>
@@ -72,8 +73,10 @@ const Blog = () => {
             Featured Artwork
           </h2>
           <article className="bg-white rounded-lg shadow-lg overflow-hidden mt-6">
-            <img
+            <Image
               src={blogPosts[0].image}
+              width={400}
+              height={300}
               alt={blogPosts[0].title}
               className="w-full h-96 object-cover" // Increased height to h-96
             />
@@ -113,8 +116,10 @@ const Blog = () => {
               key={post.id}
               className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
-              <img
+              <Image
                 src={post.image}
+                width={400}
+                height={300}
                 alt={post.title}
                 className="w-full h-60 object-cover" // Increased height to h-60
               />
@@ -154,28 +159,25 @@ const Blog = () => {
           <div className="flex-1 pr-4">
             <h3 className="text-2xl font-bold mb-2">Cone of Shame</h3>
             <p className="text-gray-700 mb-4">
-              "Cone of Shame" is an exploration of the emotional complexities and
-              societal perceptions of vulnerability and shame. Through a combination
-              of evocative illustrations and insightful narratives, Winnie Au takes
-              readers on a journey that challenges the stigma associated with
-              vulnerability.
+              "Cone of Shame" is an exploration of the emotional complexities
+              and societal perceptions of vulnerability and shame. Through a
+              combination of evocative illustrations and insightful narratives,
+              Winnie Au takes readers on a journey that challenges the stigma
+              associated with vulnerability.
             </p>
             <p className="text-gray-700 mb-4">
-              This book not only reflects the artist's unique perspective but also
-              encourages readers to embrace their imperfections and recognize the
-              beauty in vulnerability. It is a powerful reminder that shame can be a
-              shared experience, inviting conversations that foster understanding and
-              empathy.
+              This book not only reflects the artist's unique perspective but
+              also encourages readers to embrace their imperfections and
+              recognize the beauty in vulnerability. It is a powerful reminder
+              that shame can be a shared experience, inviting conversations that
+              foster understanding and empathy.
             </p>
             <p className="text-gray-700 mb-4">
-              Perfect for art enthusiasts and anyone interested in personal growth,
-              "Cone of Shame" serves as both a creative inspiration and a source of
-              comfort.
+              Perfect for art enthusiasts and anyone interested in personal
+              growth, "Cone of Shame" serves as both a creative inspiration and
+              a source of comfort.
             </p>
-            <a
-              href="#"
-              className="text-secondaryColor hover:underline"
-            >
+            <a href="#" className="text-secondaryColor hover:underline">
               Learn more or purchase...
             </a>
           </div>
@@ -183,7 +185,7 @@ const Blog = () => {
           {/* Image Container */}
           <div className="flex-none w-32 h-32">
             <img
-              src="/static/cone-of-shame.jpg" 
+              src="/static/cone-of-shame.jpg"
               alt="Cone of Shame"
               className="w-full h-full object-cover rounded" // Adjust size as needed
             />
@@ -191,20 +193,22 @@ const Blog = () => {
         </div>
       </section>
 
-    {/* Subscribe Button Section */}
-<section className="py-16 text-center">
-  <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-  <p className="text-gray-600 mb-6">Stay updated with the latest posts and news!</p>
-  <button
-    className="bg-secondaryColor text-black px-6 py-3 rounded-lg hover:bg-opacity-80 transition" // Changed text color to black
-    style={{
-      backgroundColor: colors.secondaryColor,
-      color: "#ffffff",
-    }}
-  >
-    Subscribe
-  </button>
-</section>
+      {/* Subscribe Button Section */}
+      <section className="py-16 text-center">
+        <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+        <p className="text-gray-600 mb-6">
+          Stay updated with the latest posts and news!
+        </p>
+        <button
+          className="bg-secondaryColor text-black px-6 py-3 rounded-lg hover:bg-opacity-80 transition" // Changed text color to black
+          style={{
+            backgroundColor: colors.secondaryColor,
+            color: "#ffffff",
+          }}
+        >
+          Subscribe
+        </button>
+      </section>
 
       {/* Floating Color Picker */}
       <FloatingColorPicker colors={colors} setColors={setColors} />
