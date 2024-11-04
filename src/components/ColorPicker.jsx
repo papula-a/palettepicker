@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 const ColorPicker = ({ colors, setColors }) => {
-  const [currentColorType, setCurrentColorType] = useState(null); // To track which color type is currently being edited
-
   const handleColorChange = (type, color) => {
     setColors(prevColors => ({
       ...prevColors,
@@ -10,25 +8,19 @@ const ColorPicker = ({ colors, setColors }) => {
     }));
   };
 
-  const handleCircleClick = (type) => {
-    setCurrentColorType(type);
-    const colorInput = document.getElementById(`color-input-${type}`);
-    colorInput.click(); // Simulate click on the hidden input
-  };
-
   return (
-    <div className="flex flex-col mt-4">
-      <h4 className="text-sm font-medium">Select Colors</h4>
-
-      {/* Color Circles for Primary, Secondary, Background, and Text */}
-      <div className="flex space-x-4">
+    <div className="p-4 bg-white rounded shadow-lg w-48">
+      <h4 className="text-lg font-medium mb-2">Select Your Colors</h4>
+      <div className="flex flex-col space-y-2">
         {['primaryColor', 'secondaryColor', 'bgColor'].map((type) => (
-          <div key={type} className="flex flex-col items-center">
-            <span className="font-semibold">{type.charAt(0).toUpperCase() + type.slice(1).replace('Color', '')}:</span>
+          <div key={type} className="flex items-center">
             <div
-              onClick={() => handleCircleClick(type)}
-              className="w-12 h-12 rounded-full cursor-pointer border-2 border-gray-300"
+              className="w-10 h-10 rounded-full cursor-pointer border-2 border-gray-300 mr-2"
               style={{ backgroundColor: colors[type] }}
+              onClick={() => {
+                const colorInput = document.getElementById(`color-input-${type}`);
+                colorInput.click();
+              }}
             />
             <input
               type="color"
@@ -36,8 +28,8 @@ const ColorPicker = ({ colors, setColors }) => {
               value={colors[type]}
               onChange={(e) => handleColorChange(type, e.target.value)}
               className="hidden"
-              onBlur={() => setCurrentColorType(null)} // Optionally reset currentColorType on blur
             />
+            <span className="text-sm ml-2">{colors[type]}</span> {/* Display the selected color code */}
           </div>
         ))}
       </div>

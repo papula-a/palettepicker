@@ -1,7 +1,7 @@
 "use client"; // Required for Client Component
 
 import { useState } from "react";
-import ColorPicker from "@/components/ColorPicker";
+import FloatingColorPicker from "@/components/FloatingColorPicker";
 
 const Ecommerce = () => {
   const [colors, setColors] = useState({
@@ -9,6 +9,9 @@ const Ecommerce = () => {
     secondaryColor: "#4CAF50", // Default secondary color
     bgColor: "#F4F4F9", // Default background color
   });
+  
+  // State to control visibility of the color picker
+  const [isPickerOpen, setIsPickerOpen] = useState(false);
 
   // Individual products and collections as separate items
   const products = [
@@ -127,6 +130,8 @@ const Ecommerce = () => {
           </div>
         </div>
       </section>
+
+      <FloatingColorPicker colors={colors} setColors={setColors} />
     </div>
   );
 };
