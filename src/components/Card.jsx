@@ -21,7 +21,7 @@ const Card = ({ title, description, imageSrc, altText, linkHref = "/" }) => {
       <p className="text-center text-gray-600 mb-4">{description}</p>
       <div className="flex justify-center">
         <Link href={linkHref}>
-          <button className="bg-purple-500 text-white py-2 px-8 rounded-full hover:bg-purple-800">
+          <button className="bg-[#d5adcc] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105">
             {" "}
             {/* Increased padding */}
             TRY OUT

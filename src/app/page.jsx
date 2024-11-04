@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,36 +10,59 @@ import Link from "next/link";
 import FAQSection from "@/components/FAQItem";
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+
   useEffect(() => {
     AOS.init({
       duration: 800,
       once: false,
     });
 
-    // Re-initialize AOS after the page is loaded to ensure animations display
-    setTimeout(() => {
-      AOS.refresh();
-    }, 500);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <div>
-      <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-orange-100 to-white">
-        {/* Left and Right SVG Shapes */}
+      <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-pink-100 to-white">
+        {/* Left and Right SVG Shapes with Parallax Effect */}
         <svg
           className="absolute left-0 top-0 h-full w-1/2"
           viewBox="0 0 200 800"
           preserveAspectRatio="none"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px)`,
+            transition: "transform 0.1s ease-out",
+          }}
         >
-          <path fill="#FED7AA" d="M0,0 L100,0 Q200,400 100,800 L0,800 Z" />
+          <path
+            fill="#C084FC"
+            d="M0,0 C60,200 40,600 0,800 L100,800 C160,600 140,200 100,0 Z"
+          />
         </svg>
         <svg
           className="absolute right-0 top-0 h-full w-1/2"
           viewBox="0 0 200 800"
           preserveAspectRatio="none"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px)`,
+            transition: "transform 0.1s ease-out",
+          }}
         >
-          <path fill="#FED7AA" d="M100,0 Q0,400 100,800 L200,800 L200,0 Z" />
-          <path fill="#FDBA74" d="M150,0 Q50,400 150,800 L200,800 L200,0 Z" />
+          <path
+            fill="#F9A8D4"
+            d="M100,0 C140,200 160,600 100,800 L200,800 C160,600 140,200 200,0 Z"
+          />
+          <path
+            fill="#F472B6"
+            d="M150,0 C130,200 170,600 150,800 L200,800 L200,0 Z"
+          />
         </svg>
 
         {/* Content Container */}
@@ -50,6 +73,10 @@ export default function Home() {
               <br />
               Transform Your <span className="text-yellow-500">Website</span>
             </h1>
+
+            {/* Horizontal Rectangle Under Text */}
+            <div className="mx-auto mt-4 w-1/2 h-2 rounded-lg bg-gradient-to-r from-purple-200 via-pink-200 to-purple-200" />
+
             <p className="mt-4 text-lg max-w-prose text-muted-foreground mx-auto">
               Try your color combinations on ready-to-use templates
             </p>
@@ -58,7 +85,7 @@ export default function Home() {
                 href="/templates"
                 className={cn(
                   buttonVariants({ variant: "outline" }),
-                  "bg-orange-200 hover:bg-orange-200 text-gray-800 font-semibold py-2 px-6 rounded-full"
+                  "bg-[#d5adcc] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105"
                 )}
               >
                 Templates
@@ -185,7 +212,7 @@ export default function Home() {
               href="/templates"
               className={cn(
                 buttonVariants({ variant: "outline" }),
-                "bg-[#b389a9] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105"
+                "bg-[#d5adcc] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105"
               )}
             >
               Try Out
