@@ -50,21 +50,23 @@ const Header = ({ isUserAuthenticated, user }) => {
             </>
           ) : (
             <>
-              {user?.picture ? (
-                <Image
-                  src={user.picture}
-                  alt="Profile picture"
-                  width={32}
-                  height={32}
-                  className="rounded-full"
-                />
-              ) : (
-                <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-600 text-sm">
-                    {user?.given_name?.[0] || user?.email?.[0]?.toUpperCase()}
-                  </span>
-                </div>
-              )}
+              <Link href="/profile">
+                {user?.picture ? (
+                  <Image
+                    src={user.picture}
+                    alt="Profile picture"
+                    width={32}
+                    height={32}
+                    className="rounded-full cursor-pointer"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer">
+                    <span className="text-gray-600 text-sm">
+                      {user?.given_name?.[0] || user?.email?.[0]?.toUpperCase()}
+                    </span>
+                  </div>
+                )}
+              </Link>
               <Button variant="outline">
                 <LogoutLink>Log out</LogoutLink>
               </Button>
@@ -98,12 +100,29 @@ const Header = ({ isUserAuthenticated, user }) => {
             <Link href="/about" className="text-gray-800 hover:text-pink-500">
               About Us
             </Link>
-            <Link href="/sign-in" className="text-gray-800 hover:text-pink-500">
-              Log In
-            </Link>
-            <Link href="/sign-up" className="text-gray-800 hover:text-pink-500">
-              Sign Up
-            </Link>
+            {!isUserAuthenticated ? (
+              <>
+                <Link
+                  href="/sign-in"
+                  className="text-gray-800 hover:text-pink-500"
+                >
+                  Log In
+                </Link>
+                <Link
+                  href="/sign-up"
+                  className="text-gray-800 hover:text-pink-500"
+                >
+                  Sign Up
+                </Link>
+              </>
+            ) : (
+              <Link
+                href="/profile"
+                className="text-gray-800 hover:text-pink-500"
+              >
+                Profile
+              </Link>
+            )}
           </div>
         </div>
       )}
