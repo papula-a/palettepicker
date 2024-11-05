@@ -3,8 +3,17 @@ import Card from "@/components/Card";
 const Templates = () => {
   return (
     <div>
-      <div className="flex items-center justify-center w-full h-64 bg-gradient-to-r from-pink-400 to-purple-200">
-        <div className="text-center text-lg text-purple-950">
+      {/* Header Section with Gradient Background and Randomly Positioned Semi-Transparent Circles */}
+      <div className="relative flex items-center justify-center w-full h-64 bg-gradient-to-r from-pink-400 to-purple-200">
+        {/* Randomly positioned large semi-transparent circles */}
+        <div className="absolute top-4 left-8 w-24 h-24 bg-white bg-opacity-20 rounded-full"></div>
+        <div className="absolute top-16 right-10 w-32 h-32 bg-white bg-opacity-20 rounded-full"></div>
+        <div className="absolute bottom-8 left-16 w-20 h-20 bg-white bg-opacity-20 rounded-full"></div>
+        <div className="absolute bottom-12 right-24 w-28 h-28 bg-white bg-opacity-20 rounded-full"></div>
+        <div className="absolute top-8 right-40 w-16 h-16 bg-white bg-opacity-20 rounded-full"></div>
+
+        {/* Text Content */}
+        <div className="text-center text-lg text-white">
           <h1 className="text-2xl font-bold m-3">OUR PRE-MADE TEMPLATES</h1>
           <p className="text-lg m-3">
             Try your color combinations on{" "}
@@ -14,6 +23,7 @@ const Templates = () => {
         </div>
       </div>
 
+      {/* Main Content Section */}
       <div className="min-h-screen py-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
