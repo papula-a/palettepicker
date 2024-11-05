@@ -1,4 +1,4 @@
-"use client"; // Required for Client Component
+"use client"; // Required for Client Component 
 
 import FloatingColorPicker from "@/components/FloatingColorPicker";
 import Image from "next/image";
@@ -10,9 +10,6 @@ const Ecommerce = () => {
     secondaryColor: "#4CAF50", // Default secondary color
     bgColor: "#F4F4F9", // Default background color
   });
-
-  // State to control visibility of the color picker
-  const [isPickerOpen, setIsPickerOpen] = useState(false);
 
   // Individual products and collections as separate items
   const products = [
@@ -32,7 +29,7 @@ const Ecommerce = () => {
     <div
       className="min-h-screen flex flex-col items-center"
       style={{
-        backgroundColor: colors.bgColor,
+        backgroundColor: colors.bgColor, // Apply the background color from state
       }}
     >
       {/* Hero Section */}
@@ -40,12 +37,13 @@ const Ecommerce = () => {
         className="hero-section w-full bg-cover bg-center py-28 flex items-center justify-center"
         style={{
           backgroundImage: "url('/static/hero-image.png')",
+          backgroundColor: colors.bgColor, // Ensure it uses bgColor from state
         }}
       >
         <div className="bg-white bg-opacity-90 p-12 rounded-lg shadow-lg max-w-2xl text-center">
           <h1
             className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ color: colors.primaryColor }}
+            style={{ color: colors.primaryColor }} // Apply primary color
           >
             Elevate Your Living Space
           </h1>
@@ -55,7 +53,7 @@ const Ecommerce = () => {
           <button
             className="px-6 py-3 text-base font-semibold rounded shadow-md hover:shadow-lg transition"
             style={{
-              backgroundColor: colors.secondaryColor,
+              backgroundColor: colors.secondaryColor, // Apply secondary color
               color: "#ffffff",
             }}
           >
@@ -69,7 +67,7 @@ const Ecommerce = () => {
         <div className="container mx-auto text-center">
           <h2
             className="text-3xl font-semibold mb-10"
-            style={{ color: colors.primaryColor }}
+            style={{ color: colors.primaryColor }} // Apply primary color
           >
             Featured Products
           </h2>
@@ -88,7 +86,7 @@ const Ecommerce = () => {
                 />
                 <h3
                   className="text-lg font-medium mb-1"
-                  style={{ color: colors.primaryColor }}
+                  style={{ color: colors.primaryColor }} // Apply primary color
                 >
                   {product.name}
                 </h3>
@@ -96,7 +94,7 @@ const Ecommerce = () => {
                 <button
                   className="px-4 py-2 w-full rounded transition hover:bg-opacity-90"
                   style={{
-                    backgroundColor: colors.secondaryColor,
+                    backgroundColor: colors.secondaryColor, // Apply secondary color
                     color: "#ffffff",
                   }}
                 >
@@ -113,7 +111,7 @@ const Ecommerce = () => {
         <div className="container mx-auto text-center">
           <h2
             className="text-3xl font-semibold mb-10"
-            style={{ color: colors.primaryColor }}
+            style={{ color: colors.primaryColor }} // Apply primary color
           >
             Explore Our Collections
           </h2>
@@ -141,6 +139,7 @@ const Ecommerce = () => {
         </div>
       </section>
 
+      {/* Floating Color Picker */}
       <FloatingColorPicker colors={colors} setColors={setColors} />
     </div>
   );
