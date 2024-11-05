@@ -34,24 +34,42 @@ const ProfilePage = () => {
               className="flex items-center justify-between p-4 bg-white shadow-md rounded-lg"
             >
               <div className="flex items-center space-x-4">
-                {palette.map((color, colorIndex) => (
-                  <div
-                    key={colorIndex}
-                    className="w-8 h-8 rounded-full"
-                    style={{ backgroundColor: color }}
-                  ></div>
-                ))}
+                {/* Display color circles */}
+                {Array.isArray(palette)
+                  ? palette.map((color, colorIndex) => (
+                      <div
+                        key={colorIndex}
+                        className="w-8 h-8 rounded-full"
+                        style={{ backgroundColor: color }}
+                      ></div>
+                    ))
+                  : Object.values(palette).map((color, colorIndex) => (
+                      <div
+                        key={colorIndex}
+                        className="w-8 h-8 rounded-full"
+                        style={{ backgroundColor: color }}
+                      ></div>
+                    ))}
               </div>
               <div className="flex items-center space-x-4">
                 {/* Display Color Codes */}
-                {palette.map((color, colorIndex) => (
-                  <span
-                    key={colorIndex}
-                    className="text-sm font-semibold text-gray-700"
-                  >
-                    {color}
-                  </span>
-                ))}
+                {Array.isArray(palette)
+                  ? palette.map((color, colorIndex) => (
+                      <span
+                        key={colorIndex}
+                        className="text-sm font-semibold text-gray-700"
+                      >
+                        {color}
+                      </span>
+                    ))
+                  : Object.values(palette).map((color, colorIndex) => (
+                      <span
+                        key={colorIndex}
+                        className="text-sm font-semibold text-gray-700"
+                      >
+                        {color}
+                      </span>
+                    ))}
                 {/* Delete Button */}
                 <button
                   onClick={() => deletePalette(index)}

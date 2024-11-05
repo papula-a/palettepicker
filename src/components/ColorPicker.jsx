@@ -1,4 +1,5 @@
 "use client";
+import { FaArrowDown } from "react-icons/fa"; // Importing a down arrow icon
 
 const ColorPicker = ({ colors, setColors }) => {
   const handleColorChange = (type, color) => {
@@ -10,11 +11,13 @@ const ColorPicker = ({ colors, setColors }) => {
 
   // Save the current color selection as a palette in local storage
   const savePalette = () => {
-    const newPalette = [
-      colors.primaryColor,
-      colors.secondaryColor,
-      colors.bgColor,
-    ];
+    const newPalette = {
+      primaryColor: colors.primaryColor,
+      secondaryColor: colors.secondaryColor,
+      bgColor: colors.bgColor,
+      tertiaryColor: colors.tertiaryColor || "#FFFFFF", // Ensure tertiary color is saved with default white if not set
+    };
+
     const savedPalettes =
       JSON.parse(localStorage.getItem("savedPalettes")) || [];
     const updatedPalettes = [...savedPalettes, newPalette];
@@ -24,16 +27,13 @@ const ColorPicker = ({ colors, setColors }) => {
   };
 
   return (
-    <div className="p-4 bg-white rounded shadow-lg w-48 mx-auto">
-      <h4 className="text-lg font-medium mb-4 text-center">
-        Select Your Colors
-      </h4>
-      <div className="flex flex-col space-y-2">
-        {["primaryColor", "secondaryColor", "bgColor"].map((type) => (
-          <div key={type} className="flex items-center">
+    <div className="p-2 bg-white bg-opacity-60 backdrop-blur-md rounded-md shadow-md flex items-center space-x-6 border border-gray-300">
+      {["primaryColor", "secondaryColor", "bgColor", "tertiaryColor"].map(
+        (type) => (
+          <div key={type} className="flex flex-col items-center">
             <div
-              className="w-10 h-10 rounded-full cursor-pointer border-2 border-gray-300 mr-2"
-              style={{ backgroundColor: colors[type] }}
+              className="w-8 h-8 rounded cursor-pointer border border-gray-300"
+              style={{ backgroundColor: colors[type] || "#FFFFFF" }}
               onClick={() =>
                 document.getElementById(`color-input-${type}`).click()
               }
@@ -41,21 +41,23 @@ const ColorPicker = ({ colors, setColors }) => {
             <input
               type="color"
               id={`color-input-${type}`}
-              value={colors[type]}
+              value={colors[type] || "#FFFFFF"}
               onChange={(e) => handleColorChange(type, e.target.value)}
               className="hidden"
             />
-            <span className="text-sm ml-2">{colors[type]}</span>
+            <span className="text-xs text-gray-600">
+              {colors[type] || "#FFFFFF"}
+            </span>
           </div>
-        ))}
-      </div>
+        )
+      )}
 
-      {/* Save Button */}
+      {/* Save Icon Button */}
       <button
         onClick={savePalette}
-        className="mt-4 w-full bg-[#d5adcc] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105"
+        className="text-gray-500 hover:text-gray-700"
       >
-        Save Palette
+        <FaArrowDown size={20} />
       </button>
     </div>
   );

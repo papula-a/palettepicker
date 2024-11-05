@@ -4,23 +4,10 @@ export default function AboutUs() {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative flex items-center justify-center w-full h-64 bg-gradient-to-r from-purple-500 to-pink-300">
+      <div className="flex items-center justify-center w-full h-64 bg-gradient-to-r from-purple-500 to-pink-300">
         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white">
           About <span className="text-yellow-400">Us</span>
         </h1>
-        {/* Decorative Circles for Hero Section */}
-        <svg
-          className="absolute top-4 left-4 w-32 h-32 opacity-30"
-          viewBox="0 0 100 100"
-        >
-          <circle cx="50" cy="50" r="50" fill="white" />
-        </svg>
-        <svg
-          className="absolute bottom-4 right-8 w-40 h-40 opacity-20"
-          viewBox="0 0 100 100"
-        >
-          <circle cx="50" cy="50" r="50" fill="white" />
-        </svg>
       </div>
 
       {/* Mission Section */}
@@ -28,7 +15,7 @@ export default function AboutUs() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="flex justify-center">
-              <div className="mb-12 lg:mb-0 relative">
+              <div className="mb-12 lg:mb-0">
                 <p className="text-xl md:text-2xl lg:text-3xl text-black max-w-2xl text-justify">
                   We want to{" "}
                   <span className="font-semibold text-yellow-500">
@@ -120,7 +107,7 @@ export default function AboutUs() {
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-semibold mb-8">Meet the Creators</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {/* Creator 1 */}
+            {/* Creator 1 - Papula Azad */}
             <div className="flex flex-col items-center">
               <Image
                 src="/static/team/papula.jpg" // Replace with actual image path
@@ -133,7 +120,7 @@ export default function AboutUs() {
               <p className="text-gray-500">UI/UX Designer & Developer</p>
             </div>
 
-            {/* Creator 2 */}
+            {/* Creator 2 - Diya Hushyar */}
             <div className="flex flex-col items-center">
               <Image
                 src="/static/team/diya.jpg" // Replace with actual image path
