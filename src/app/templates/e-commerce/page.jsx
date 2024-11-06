@@ -6,10 +6,10 @@ import { useState } from "react";
 
 const Ecommerce = () => {
   const [colors, setColors] = useState({
-    primaryColor: "#333333", // Default primary color for text
-    secondaryColor: "#4CAF50", // Default secondary color for buttons
-    bgColor: "#F4F4F9", // Default background color
-    tertiaryColor: "#F4F4F9" // Default tertiary color for featured product containers and hero section
+    primaryColor: "#333333",
+    secondaryColor: "#4CAF50",
+    bgColor: "#F4F4F9",
+    tertiaryColor: "#ebebf0"
   });
 
   const products = [
@@ -28,27 +28,23 @@ const Ecommerce = () => {
   return (
     <div
       className="min-h-screen flex flex-col items-center"
-      style={{
-        backgroundColor: colors.bgColor, // Apply background color
-      }}
+      style={{ backgroundColor: colors.bgColor }}
     >
       {/* Hero Section */}
       <section
         className="hero-section w-full bg-cover bg-center py-28 flex items-center justify-center"
         style={{
           backgroundImage: "url('/static/hero-image.png')",
-          backgroundColor: colors.bgColor, // Ensure it uses bgColor
+          backgroundColor: colors.bgColor,
         }}
       >
         <div
           className="p-12 rounded-lg shadow-lg max-w-2xl text-center"
-          style={{
-            backgroundColor: colors.tertiaryColor, // Apply tertiary color for hero section background
-          }}
+          style={{ backgroundColor: colors.tertiaryColor }}
         >
           <h1
             className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ color: colors.primaryColor }} // Apply primary color for text
+            style={{ color: colors.primaryColor }}
           >
             Elevate Your Living Space
           </h1>
@@ -56,9 +52,9 @@ const Ecommerce = () => {
             Discover our curated selection of contemporary home decor.
           </p>
           <button
-            className="px-6 py-3 text-base font-semibold rounded shadow-md hover:shadow-lg transition"
+            className="px-6 py-3 text-base font-semibold rounded shadow-md hover:shadow-lg hover:bg-opacity-80 transition"
             style={{
-              backgroundColor: colors.secondaryColor, // Apply secondary color for button
+              backgroundColor: colors.secondaryColor,
               color: "#ffffff",
             }}
           >
@@ -67,12 +63,28 @@ const Ecommerce = () => {
         </div>
       </section>
 
+      {/* Wave Divider */}
+      <div className="w-full overflow-hidden">
+        <svg className="wave-divider" viewBox="0 0 1440 320">
+          <path
+            fill={colors.tertiaryColor}
+            fillOpacity="1"
+            d="M0,256L80,240C160,224,320,192,480,176C640,160,800,160,960,176C1120,192,1280,224,1360,240L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
+          ></path>
+        </svg>
+      </div>
+
       {/* Featured Products Section */}
-      <section className="py-16 w-full px-4">
+      <section
+        className="py-16 w-full px-4"
+        style={{
+          background: `linear-gradient(135deg, ${colors.tertiaryColor}, ${colors.bgColor})`,
+        }}
+      >
         <div className="container mx-auto text-center">
           <h2
             className="text-3xl font-semibold mb-10"
-            style={{ color: colors.primaryColor }} // Apply primary color for section title
+            style={{ color: colors.primaryColor }}
           >
             Featured Products
           </h2>
@@ -80,9 +92,9 @@ const Ecommerce = () => {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="p-6 rounded-md shadow-lg hover:shadow-2xl transition"
+                className="p-6 rounded-md shadow-lg transform transition hover:scale-105"
                 style={{
-                  backgroundColor: colors.tertiaryColor, // Apply tertiary color for product containers
+                  backgroundColor: colors.tertiaryColor,
                 }}
               >
                 <Image
@@ -94,7 +106,7 @@ const Ecommerce = () => {
                 />
                 <h3
                   className="text-lg font-medium mb-1"
-                  style={{ color: colors.primaryColor }} // Apply primary color for product name
+                  style={{ color: colors.primaryColor }}
                 >
                   {product.name}
                 </h3>
@@ -104,7 +116,7 @@ const Ecommerce = () => {
                 <button
                   className="px-4 py-2 w-full rounded transition hover:bg-opacity-90"
                   style={{
-                    backgroundColor: colors.secondaryColor, // Apply secondary color for button
+                    backgroundColor: colors.secondaryColor,
                     color: "#ffffff",
                   }}
                 >
@@ -116,17 +128,17 @@ const Ecommerce = () => {
         </div>
       </section>
 
-      {/* Collections Section */}
+      {/* Explore Our Collections Section */}
       <section
         className="py-16 w-full px-4"
         style={{
-          backgroundColor: colors.bgColor, // Apply bgColor to Explore Our Collections background
+          backgroundColor: colors.tertiaryColor,
         }}
       >
         <div className="container mx-auto text-center">
           <h2
             className="text-3xl font-semibold mb-10"
-            style={{ color: colors.primaryColor }} // Apply primary color for section title
+            style={{ color: colors.primaryColor }}
           >
             Explore Our Collections
           </h2>
@@ -134,7 +146,7 @@ const Ecommerce = () => {
             {collections.map((collection) => (
               <div
                 key={collection.id}
-                className="relative overflow-hidden rounded-md shadow-lg hover:shadow-2xl transition"
+                className="relative overflow-hidden transform transition hover:scale-105"
               >
                 <Image
                   src={collection.image}

@@ -29,6 +29,9 @@ const LandingPage = () => {
       <div className="bubble bubble1" style={{ backgroundColor: colors.tertiaryColor }}></div>
       <div className="bubble bubble2" style={{ backgroundColor: colors.secondaryColor }}></div>
       <div className="bubble bubble3" style={{ backgroundColor: colors.primaryColor }}></div>
+      <div className="bubble bubble4" style={{ backgroundColor: colors.tertiaryColor }}></div>
+      <div className="bubble bubble5" style={{ backgroundColor: colors.secondaryColor }}></div>
+      <div className="bubble bubble6" style={{ backgroundColor: colors.primaryColor }}></div>
 
       {/* Hero Section */}
       <section className="text-center py-48 relative flex flex-col items-center justify-center z-10">
@@ -158,6 +161,30 @@ const LandingPage = () => {
           top: 15%;
           left: 25%;
           animation-delay: 4s;
+        }
+
+        .bubble4 {
+          width: 60px;
+          height: 60px;
+          top: 10%;
+          right: 20%;
+          animation-delay: 3s;
+        }
+
+        .bubble5 {
+          width: 120px;
+          height: 120px;
+          bottom: 5%;
+          left: 30%;
+          animation-delay: 1s;
+        }
+
+        .bubble6 {
+          width: 90px;
+          height: 90px;
+          top: 25%;
+          right: 10%;
+          animation-delay: 5s;
         }
 
         @keyframes float {
