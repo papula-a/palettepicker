@@ -7,7 +7,7 @@ import { useState } from "react";
 const Ecommerce = () => {
   const [colors, setColors] = useState({
     primaryColor: "#333333",
-    secondaryColor: "#4CAF50",
+    secondaryColor: "#A8D5BA",
     bgColor: "#F4F4F9",
     tertiaryColor: "#ebebf0"
   });
