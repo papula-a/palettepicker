@@ -126,6 +126,35 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+      {/* User Mood Section */}
+{/* User Mood Section */}
+<section className="py-10 px-6 text-center">
+  <h2 className="text-3xl font-bold mb-6" style={{ color: colors.textColor }}>
+    How Are You Feeling Today?
+  </h2>
+  <form className="flex flex-col items-center space-y-4">
+    <label className="text-lg mb-2" style={{ color: colors.textColor }}>
+      Slide to indicate your mood:
+    </label>
+    <input
+      type="range"
+      min="1"
+      max="5"
+      step="1"
+      defaultValue="3"
+      className="w-64"
+      onChange={(e) => console.log(`Mood rating: ${e.target.value}`)}
+      style={{ accentColor: colors.primaryColor }}
+    />
+    <div className="flex justify-between w-64 mt-2" style={{ color: colors.textColor }}>
+      <span>Very Bad</span>
+      <span>Neutral</span>
+      <span>Very Good</span>
+    </div>
+  </form>
+</section>
+
+
       
       {/* Floating Color Picker */}
       <FloatingColorPicker colors={colors} setColors={setColors} className="relative z-50" />
