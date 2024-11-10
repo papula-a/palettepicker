@@ -11,6 +11,7 @@ const Ecommerce = () => {
     bgColor: "#F4F4F9",
     tertiaryColor: "#ebebf0"
   });
+  
 
   const products = [
     { id: 1, name: "Product 1", price: "$99.99", image: "/static/chair.png" },

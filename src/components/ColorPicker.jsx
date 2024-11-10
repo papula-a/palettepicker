@@ -10,6 +10,14 @@ const ColorPicker = ({ colors, setColors }) => {
     }));
   };
 
+  // Map color types to display names
+  const colorLabels = {
+    primaryColor: "Text Color",
+    secondaryColor: "Button Color",
+    bgColor: "Background Color",
+    tertiaryColor: "Whitespace Color",
+  };
+
   // Save the current color selection as a palette in local storage
   const savePalette = () => {
     const newPalette = {
@@ -28,7 +36,7 @@ const ColorPicker = ({ colors, setColors }) => {
 
   return (
     <div className="p-4 bg-white bg-opacity-60 backdrop-blur-md rounded-md shadow-md flex items-center space-x-6 border border-gray-300 z-50">
-      {["primaryColor", "secondaryColor", "bgColor", "tertiaryColor"].map((type) => (
+      {Object.keys(colorLabels).map((type) => (
         <div key={type} className="flex flex-col items-center">
           {/* Color preview circle */}
           <div
@@ -44,9 +52,9 @@ const ColorPicker = ({ colors, setColors }) => {
             onChange={(e) => handleColorChange(type, e.target.value)}
             className="hidden"
           />
-          {/* Color code display */}
+          {/* Label display */}
           <span className="text-xs text-gray-600">
-            {colors[type] || "#FFFFFF"}
+            {colorLabels[type]}
           </span>
         </div>
       ))}
