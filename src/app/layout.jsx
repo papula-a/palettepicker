@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <AuthProvider>
       <html lang="en">
-        <body>
+        <body className={fredoka.className}>
           {/* <Header /> */}
           <HeaderWithSession />
           <main className="flex-grow">

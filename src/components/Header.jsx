@@ -12,9 +12,31 @@ import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import Navbar from "./Navbar";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 const Header = ({ isUserAuthenticated, user }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
 
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-2 bg-white shadow-md">
@@ -44,33 +66,63 @@ const Header = ({ isUserAuthenticated, user }) => {
               <Button variant="outline">
                 <LoginLink postLoginRedirectURL="/">Sign in</LoginLink>
               </Button>
+
+              <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+
               <Button variant="outline">
                 <RegisterLink postLoginRedirectURL="/">Sign up</RegisterLink>
               </Button>
             </>
           ) : (
-            <>
-              <Link href="/profile">
-                {user?.picture ? (
-                  <Image
-                    src={user.picture}
-                    alt="Profile picture"
-                    width={32}
-                    height={32}
-                    className="rounded-full cursor-pointer"
-                  />
-                ) : (
-                  <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer">
-                    <span className="text-gray-600 text-sm">
-                      {user?.given_name?.[0] || user?.email?.[0]?.toUpperCase()}
-                    </span>
-                  </div>
-                )}
-              </Link>
-              <Button variant="outline">
-                <LogoutLink>Log out</LogoutLink>
-              </Button>
-            </>
+            <div className="relative">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Avatar className="cursor-pointer">
+                    <AvatarImage src={user.picture} alt={user.given_name} />
+                    <AvatarFallback>PP</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="absolute right-0 mt-2 w-40">
+                  <DropdownMenuLabel className="text-[#C084FC] text-lg">
+                    {user.given_name} {user.family_name}
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      {/* <Icons.user className="mr-2 h-4 w-4" /> */}
+                      <Link href="/user/profile" className="cursor-pointer">
+                        Profile
+                      </Link>
+                      <DropdownMenuShortcut className="text-[#C084FC]">
+                        ⇧⌘P
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      {/* <Icons.archive className="mr-2 h-4 w-4" /> */}
+                      <Link href="/user/palettes" className="cursor-pointer">
+                        My Palettes
+                      </Link>
+                      <DropdownMenuShortcut className="text-[#C084FC]">
+                        ⌘E
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      {/* <Icons.logout className="mr-2 h-4 w-4" /> */}
+                      <LogoutLink>Log out</LogoutLink>
+                      <DropdownMenuShortcut className="text-[#C084FC]">
+                        ⇧⌘Q
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           )}
         </div>
 
