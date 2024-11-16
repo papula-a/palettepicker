@@ -1,217 +1,199 @@
 "use client"; // Required for Client Component
 
-import FloatingColorPicker from "@/components/FloatingColorPicker";
-import Image from "next/image";
 import { useState } from "react";
 
 const Blog = () => {
-  const [colors, setColors] = useState({
-    primaryColor: "#333333", // Dark color for primary text
-    secondaryColor: "#4CAF50", // Green accent color
-    bgColor: "#f9f9f9", // Light background color
+  const [colors] = useState({
+    primaryColor: "#000000", // Unified black text color
+    bgColor: "#F8F8F8", // Off-white background
   });
 
   const blogPosts = [
     {
       id: 1,
-      title: "The Art of Reflection",
-      date: "October 28, 2024",
-      author: "Winnie Au",
-      excerpt:
-        "Explore the techniques behind my latest collection, inspired by personal reflections and nature.",
-      image: "/static/winnie-art1.jpg",
+      title: "Understanding Minimalist Design",
+      category: "Design Principles",
+      excerpt: "Learn the core principles behind effective minimalist design.",
     },
     {
       id: 2,
-      title: "Nature as Muse",
-      date: "October 25, 2024",
-      author: "Winnie Au",
-      excerpt:
-        "How the natural world fuels my creativity and informs my artistic process.",
-      image: "/static/winnie-art2.jpg",
+      title: "UI Trends of 2024",
+      category: "User Interface",
+      excerpt: "Explore the latest UI trends shaping the design world.",
     },
     {
       id: 3,
-      title: "Color and Emotion",
-      date: "October 22, 2024",
-      author: "Winnie Au",
-      excerpt: "An exploration of how color influences emotion in my artwork.",
-      image: "/static/winnie-art3.jpg",
+      title: "Typography Basics",
+      category: "Typography",
+      excerpt: "Master the art of typography for web and print design.",
     },
     {
       id: 4,
-      title: "Artistic Sustainability",
-      date: "October 20, 2024",
-      author: "Winnie Au",
+      title: "Color Theory for Designers",
+      category: "Color Theory",
+      excerpt: "Understand how to use color effectively in your projects.",
+    },
+    {
+      id: 5,
+      title: "Accessibility in Design",
+      category: "Inclusive Design",
       excerpt:
-        "The importance of sustainability in art and how I incorporate it into my practice.",
-      image: "/static/winnie-art4.jpg",
+        "Discover how to create designs that are accessible to everyone.",
+    },
+    {
+      id: 6,
+      title: "The Power of White Space",
+      category: "Design Principles",
+      excerpt:
+        "Learn how white space can enhance your designs' clarity and elegance.",
+    },
+  ];
+
+  const popularPosts = [
+    { id: 1, title: "10 Typography Trends in 2024", category: "Typography" },
+    { id: 2, title: "Best Tools for UI Designers", category: "Design Tools" },
+    { id: 3, title: "Color Psychology in Branding", category: "Color Theory" },
+    { id: 4, title: "Creating Accessible Designs", category: "Accessibility" },
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      quote:
+        "This blog has completely changed how I approach design. Highly recommended!",
+      author: "Jane Doe",
+    },
+    {
+      id: 2,
+      quote:
+        "The insights on color theory were exactly what I needed for my latest project.",
+      author: "John Smith",
+    },
+    {
+      id: 3,
+      quote: "An invaluable resource for designers at any level.",
+      author: "Emily Johnson",
     },
   ];
 
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{ backgroundColor: colors.bgColor }}
-    >
-      {/* Header Section */}
-      <header className="w-full bg-white shadow">
-        <div className="container mx-auto px-4 py-6 flex justify-center">
-          <h1 className="text-4xl font-bold text-gray-800">
-            Winnie Au&apos;s Art Blog
-          </h1>
-        </div>
-      </header>
-
+    <div className="min-h-screen" style={{ backgroundColor: colors.bgColor }}>
       {/* Hero Section */}
-      <section className="w-full bg-gray-100">
-        <div className="container mx-auto px-4 py-10">
-          <h2
-            className="text-3xl font-semibold text-center"
-            style={{ color: colors.primaryColor }}
-          >
-            Featured Artwork
-          </h2>
-          <article className="bg-white rounded-lg shadow-lg overflow-hidden mt-6">
-            <Image
-              src={blogPosts[0].image}
-              width={400}
-              height={300}
-              alt={blogPosts[0].title}
-              className="w-full h-96 object-cover" // Increased height to h-96
-            />
-            <div className="p-6">
-              <h3
-                className="text-2xl font-bold mb-2"
-                style={{ color: colors.primaryColor }}
-              >
-                {blogPosts[0].title}
-              </h3>
-              <p className="text-gray-600 text-sm mb-1">
-                {blogPosts[0].date} by {blogPosts[0].author}
-              </p>
-              <p className="text-gray-700 mt-4">{blogPosts[0].excerpt}</p>
-              <a
-                href="#"
-                className="text-secondaryColor hover:underline mt-4 inline-block"
-              >
-                Read more...
-              </a>
-            </div>
-          </article>
+      <section className="bg-pink-500 text-black py-40 px-4 overflow-hidden">
+        <svg
+          className="absolute top-0 left-0 w-full"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+        >
+          <path
+            fill="#F78DA7"
+            fillOpacity="1"
+            d="M0,64L48,74.7C96,85,192,107,288,128C384,149,480,171,576,160C672,149,768,107,864,85.3C960,64,1056,64,1152,80C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+          ></path>
+        </svg>
+        <div className="relative container mx-auto text-center pt-12 z-10">
+          <h1 className="text-5xl font-bold uppercase mb-6">
+            Design Solutions
+          </h1>
+          <p className="text-lg font-light mb-8 max-w-2xl mx-auto">
+            Elevate your design projects with innovative solutions and creative
+            strategies. Explore tips, tools, and resources to unleash your
+            creativity.
+          </p>
+          <div className="mt-8">
+            <button className="bg-white text-black font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition">
+              Get Started
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* Blog Posts Section */}
-      <main className="container mx-auto px-4 py-10">
-        <h2
-          className="text-3xl font-semibold mb-10 text-center"
-          style={{ color: colors.primaryColor }}
-        >
-          Latest Posts
+      {/* Popular Posts Section */}
+      <section className="container mx-auto px-8 sm:px-16 py-10">
+        <h2 className="text-3xl font-semibold mb-6 text-black">
+          Popular Posts
         </h2>
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {blogPosts.slice(1).map((post) => (
+        <div className="flex gap-6 overflow-x-auto scrollbar-thin scrollbar-thumb-pink-500 scrollbar-track-gray-200">
+          {popularPosts.map((post) => (
+            <div
+              key={post.id}
+              className="flex-none bg-white rounded-lg shadow-md p-6 w-64 hover:shadow-lg transition"
+            >
+              <h3 className="text-lg font-bold text-black">{post.title}</h3>
+              <p className="text-sm text-gray-600">{post.category}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Latest Articles Section */}
+      <section className="container mx-auto px-8 sm:px-16 py-10">
+        <h2 className="text-3xl font-semibold mb-10 text-center text-black">
+          Latest Articles
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post) => (
             <article
               key={post.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
+              className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden flex flex-col transition-transform transform hover:scale-105 hover:shadow-2xl"
             >
-              <Image
-                src={post.image}
-                width={400}
-                height={300}
-                alt={post.title}
-                className="w-full h-60 object-cover" // Increased height to h-60
-              />
-              <div className="p-4">
-                <h3
-                  className="text-lg font-bold mb-1"
-                  style={{ color: colors.primaryColor }}
-                >
+              <div className="h-28 bg-pink-200"></div>
+              <div className="p-8">
+                <h3 className="text-lg font-bold mb-2 text-black">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 text-xs mb-1">
-                  {post.date} by {post.author}
-                </p>
-                <p className="text-gray-700 text-sm">{post.excerpt}</p>
-                <a
-                  href="#"
-                  className="text-secondaryColor hover:underline text-xs"
-                >
-                  Read more...
-                </a>
+                <p className="text-sm text-gray-600 mb-2">{post.category}</p>
+                <p className="text-sm text-gray-700">{post.excerpt}</p>
               </div>
             </article>
           ))}
         </div>
-      </main>
+        <div className="text-center mt-8">
+          <button className="bg-pink-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-pink-600 transition">
+            View All Articles
+          </button>
+        </div>
+      </section>
 
-      {/* Book Section */}
-      <section className="w-full px-4 py-10 bg-gray-100">
-        <h2
-          className="text-3xl font-semibold mb-6 text-center"
-          style={{ color: colors.primaryColor }}
-        >
-          Winnie Au's Book
-        </h2>
-        <div className="container mx-auto bg-white rounded-lg shadow-lg p-6 flex">
-          {/* Text Content */}
-          <div className="flex-1 pr-4">
-            <h3 className="text-2xl font-bold mb-2">Cone of Shame</h3>
-            <p className="text-gray-700 mb-4">
-              "Cone of Shame" is an exploration of the emotional complexities
-              and societal perceptions of vulnerability and shame. Through a
-              combination of evocative illustrations and insightful narratives,
-              Winnie Au takes readers on a journey that challenges the stigma
-              associated with vulnerability.
-            </p>
-            <p className="text-gray-700 mb-4">
-              This book not only reflects the artist's unique perspective but
-              also encourages readers to embrace their imperfections and
-              recognize the beauty in vulnerability. It is a powerful reminder
-              that shame can be a shared experience, inviting conversations that
-              foster understanding and empathy.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Perfect for art enthusiasts and anyone interested in personal
-              growth, "Cone of Shame" serves as both a creative inspiration and
-              a source of comfort.
-            </p>
-            <a href="#" className="text-secondaryColor hover:underline">
-              Learn more or purchase...
-            </a>
-          </div>
-
-          {/* Image Container */}
-          <div className="flex-none w-32 h-32">
-            <img
-              src="/static/cone-of-shame.jpg"
-              alt="Cone of Shame"
-              className="w-full h-full object-cover rounded" // Adjust size as needed
-            />
+      {/* Testimonials Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-8 sm:px-16">
+          <h2 className="text-3xl font-semibold text-center mb-10 text-black">
+            What Readers Say
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => (
+              <div
+                key={testimonial.id}
+                className="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-2xl transition"
+              >
+                <p className="italic text-gray-700">{testimonial.quote}</p>
+                <h4 className="mt-4 font-bold text-black">
+                  {testimonial.author}
+                </h4>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Subscribe Button Section */}
-      <section className="py-16 text-center">
+      {/* Newsletter Section */}
+      <section className="py-16 bg-pink-500 text-black text-center">
         <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-        <p className="text-gray-600 mb-6">
-          Stay updated with the latest posts and news!
+        <p className="mb-6">
+          Stay updated with the latest posts, stories, and insights!
         </p>
-        <button
-          className="bg-secondaryColor text-black px-6 py-3 rounded-lg hover:bg-opacity-80 transition" // Changed text color to black
-          style={{
-            backgroundColor: colors.secondaryColor,
-            color: "#ffffff",
-          }}
-        >
-          Subscribe
-        </button>
+        <div className="flex justify-center items-center gap-4">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="px-4 py-3 rounded-full w-64 text-gray-700 focus:outline-none shadow-md"
+          />
+          <button className="bg-black text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-gray-800 transition">
+            Subscribe
+          </button>
+        </div>
       </section>
-
-      {/* Floating Color Picker */}
-      <FloatingColorPicker colors={colors} setColors={setColors} />
     </div>
   );
 };
