@@ -141,4 +141,4 @@ const FloatingColorPicker = ({ colors, setColors, defaultColors }) => {
   );
 };
 
-export default FloatingColorPicker;
+export default Blog;
