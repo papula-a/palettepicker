@@ -110,10 +110,10 @@ export default function AboutUs() {
             {/* Creator 1 - Papula Azad */}
             <div className="flex flex-col items-center">
               <Image
-                src="/static/team/papula.jpg" // Replace with actual image path
+                src="/static/team/about-image.jpg" // Replace with actual image path
                 alt="Papula Azad"
-                width={120}
-                height={120}
+                width={240}
+                height={240}
                 className="rounded-full mb-4"
               />
               <h3 className="text-lg font-bold">Papula Azad</h3>
@@ -123,10 +123,10 @@ export default function AboutUs() {
             {/* Creator 2 - Diya Hushyar */}
             <div className="flex flex-col items-center">
               <Image
-                src="/static/team/diya.jpg" // Replace with actual image path
+                src="/static/team/about-image.jpg" // Replace with actual image path
                 alt="Diya Hushyar"
-                width={120}
-                height={120}
+                width={240}
+                height={240}
                 className="rounded-full mb-4"
               />
               <h3 className="text-lg font-bold">Diya Hushyar</h3>

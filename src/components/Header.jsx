@@ -23,12 +23,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import Icons from "@/components/Icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import { FaUser } from "react-icons/fa";
 
-const Header = ({ isUserAuthenticated, user }) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const { isAuthenticated, isLoading, user } = useKindeBrowserClient();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -41,7 +46,7 @@ const Header = ({ isUserAuthenticated, user }) => {
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-2 bg-white shadow-md">
       {/* Logo */}
-      <div className="flex justify-start">
+      <div className="flex justify-start w-1/5">
         <Link href="/">
           <Image
             src="/static/logo.png"
@@ -54,23 +59,35 @@ const Header = ({ isUserAuthenticated, user }) => {
       </div>
 
       {/* Navbar for larger screens */}
-      <div className="hidden md:flex flex-1 justify-center">
+      <div className="hidden md:flex justify-center w-3/5">
         <Navbar />
       </div>
 
       {/* User Profile Icon and Burger Menu */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center justify-end space-x-4 w-1/5">
         <div className="hidden md:flex space-x-4">
-          {!isUserAuthenticated ? (
+          {!isAuthenticated ? (
             <>
-              <Button variant="outline">
-                <LoginLink postLoginRedirectURL="/">Sign in</LoginLink>
+              <Button variant="outline" disabled={isLoading}>
+                {isLoading ? (
+                  <span className="flex items-center">
+                    <Icons.spinner className="animate-spin h-4 w-4 text-gray-500" />
+                  </span>
+                ) : (
+                  <LoginLink>Sign in</LoginLink>
+                )}
               </Button>
 
               <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
 
-              <Button variant="outline">
-                <RegisterLink postLoginRedirectURL="/">Sign up</RegisterLink>
+              <Button variant="outline" disabled={isLoading}>
+                {isLoading ? (
+                  <span className="flex items-center">
+                    <Icons.spinner className="animate-spin h-4 w-4 text-gray-500" />
+                  </span>
+                ) : (
+                  <RegisterLink>Sign up</RegisterLink>
+                )}
               </Button>
             </>
           ) : (
@@ -83,25 +100,26 @@ const Header = ({ isUserAuthenticated, user }) => {
                   </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="absolute right-0 mt-2 w-40">
-                  <DropdownMenuLabel className="text-[#C084FC] text-lg">
-                    {user.given_name} {user.family_name}
+                  <DropdownMenuLabel className="text-yellow-500 text-lg flex items-center space-x-2">
+                    <FaUser className="text-gray-600" />
+                    <span>
+                      {user.given_name} {user.family_name}
+                    </span>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      {/* <Icons.user className="mr-2 h-4 w-4" /> */}
                       <Link href="/user/profile" className="cursor-pointer">
                         Profile
                       </Link>
-                      <DropdownMenuShortcut className="text-[#C084FC]">
+                      <DropdownMenuShortcut className="text-yellow-500">
                         ⇧⌘P
                       </DropdownMenuShortcut>
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
+                  {/* <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      {/* <Icons.archive className="mr-2 h-4 w-4" /> */}
                       <Link href="/user/palettes" className="cursor-pointer">
                         My Palettes
                       </Link>
@@ -110,12 +128,11 @@ const Header = ({ isUserAuthenticated, user }) => {
                       </DropdownMenuShortcut>
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
+                  <DropdownMenuSeparator /> */}
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      {/* <Icons.logout className="mr-2 h-4 w-4" /> */}
                       <LogoutLink>Log out</LogoutLink>
-                      <DropdownMenuShortcut className="text-[#C084FC]">
+                      <DropdownMenuShortcut className="text-yellow-500">
                         ⇧⌘Q
                       </DropdownMenuShortcut>
                     </DropdownMenuItem>
@@ -152,7 +169,7 @@ const Header = ({ isUserAuthenticated, user }) => {
             <Link href="/about" className="text-gray-800 hover:text-pink-500">
               About Us
             </Link>
-            {!isUserAuthenticated ? (
+            {!isAuthenticated ? (
               <>
                 <Link
                   href="/sign-in"

@@ -4,12 +4,15 @@ import FloatingColorPicker from "@/components/FloatingColorPicker";
 import Image from "next/image";
 import { useState } from "react";
 
+const DEFAULT_COLORS = {
+  primaryColor: "#333333",
+  secondaryColor: "#A8D5BA",
+  bgColor: "#F4F4F9",
+  tertiaryColor: "#ebebf0",
+};
+
 const Blog = () => {
-  const [colors, setColors] = useState({
-    primaryColor: "#333333", // Dark color for primary text
-    secondaryColor: "#4CAF50", // Green accent color
-    bgColor: "#f9f9f9", // Light background color
-  });
+  const [colors, setColors] = useState(DEFAULT_COLORS);
 
   const blogPosts = [
     {
@@ -152,30 +155,30 @@ const Blog = () => {
           className="text-3xl font-semibold mb-6 text-center"
           style={{ color: colors.primaryColor }}
         >
-          Winnie Au's Book
+          Winnie Au&apos;s Book
         </h2>
         <div className="container mx-auto bg-white rounded-lg shadow-lg p-6 flex">
           {/* Text Content */}
           <div className="flex-1 pr-4">
             <h3 className="text-2xl font-bold mb-2">Cone of Shame</h3>
             <p className="text-gray-700 mb-4">
-              "Cone of Shame" is an exploration of the emotional complexities
-              and societal perceptions of vulnerability and shame. Through a
-              combination of evocative illustrations and insightful narratives,
-              Winnie Au takes readers on a journey that challenges the stigma
-              associated with vulnerability.
+              &quot;Cone of Shame&quot; is an exploration of the emotional
+              complexities and societal perceptions of vulnerability and shame.
+              Through a combination of evocative illustrations and insightful
+              narratives, Winnie Au takes readers on a journey that challenges
+              the stigma associated with vulnerability.
             </p>
             <p className="text-gray-700 mb-4">
-              This book not only reflects the artist's unique perspective but
-              also encourages readers to embrace their imperfections and
+              This book not only reflects the artist&apos;s unique perspective
+              but also encourages readers to embrace their imperfections and
               recognize the beauty in vulnerability. It is a powerful reminder
               that shame can be a shared experience, inviting conversations that
               foster understanding and empathy.
             </p>
             <p className="text-gray-700 mb-4">
               Perfect for art enthusiasts and anyone interested in personal
-              growth, "Cone of Shame" serves as both a creative inspiration and
-              a source of comfort.
+              growth, &quot;Cone of Shame&quot; serves as both a creative
+              inspiration and a source of comfort.
             </p>
             <a href="#" className="text-secondaryColor hover:underline">
               Learn more or purchase...
@@ -184,9 +187,11 @@ const Blog = () => {
 
           {/* Image Container */}
           <div className="flex-none w-32 h-32">
-            <img
+            <Image
               src="/static/cone-of-shame.jpg"
               alt="Cone of Shame"
+              width={32}
+              height={32}
               className="w-full h-full object-cover rounded" // Adjust size as needed
             />
           </div>
@@ -211,7 +216,11 @@ const Blog = () => {
       </section>
 
       {/* Floating Color Picker */}
-      <FloatingColorPicker colors={colors} setColors={setColors} />
+      <FloatingColorPicker
+        colors={colors}
+        setColors={setColors}
+        defaultColors={DEFAULT_COLORS}
+      />
     </div>
   );
 };

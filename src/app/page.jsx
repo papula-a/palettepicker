@@ -1,13 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+
+import FAQSection from "@/components/FAQItem";
+import FeatureCard from "@/components/FeatureCard";
+import Icons from "@/components/Icons";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import FeatureCard from "@/components/FeatureCard";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
-import FAQSection from "@/components/FAQItem";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -31,44 +31,28 @@ export default function Home() {
   return (
     <div>
       <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-pink-100 to-white">
-        {/* Left and Right SVG Shapes with Parallax Effect */}
-        <svg
+        {/* Left SVG Shape */}
+        <Icons.leftShape
           className="absolute left-0 top-0 h-full w-1/2"
-          viewBox="0 0 200 800"
-          preserveAspectRatio="none"
           style={{
             transform: `translateY(${scrollY * 0.2}px)`,
             transition: "transform 0.1s ease-out",
           }}
-        >
-          <path
-            fill="#C084FC"
-            d="M0,0 C60,200 40,600 0,800 L100,800 C160,600 140,200 100,0 Z"
-          />
-        </svg>
-        <svg
+        />
+
+        {/* Right SVG Shape */}
+        <Icons.rightShape
           className="absolute right-0 top-0 h-full w-1/2"
-          viewBox="0 0 200 800"
-          preserveAspectRatio="none"
           style={{
             transform: `translateY(${scrollY * 0.2}px)`,
             transition: "transform 0.1s ease-out",
           }}
-        >
-          <path
-            fill="#F9A8D4"
-            d="M100,0 C140,200 160,600 100,800 L200,800 C160,600 140,200 200,0 Z"
-          />
-          <path
-            fill="#F472B6"
-            d="M150,0 C130,200 170,600 150,800 L200,800 L200,0 Z"
-          />
-        </svg>
+        />
 
         {/* Content Container */}
         <div className="relative z-10 flex items-center justify-center w-full h-full">
           <div className="text-center px-4">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-600">
               Color Your <span className="text-yellow-500">Vision</span>,
               <br />
               Transform Your <span className="text-yellow-500">Website</span>
@@ -77,16 +61,13 @@ export default function Home() {
             {/* Horizontal Rectangle Under Text */}
             <div className="mx-auto mt-4 w-1/2 h-2 rounded-lg bg-gradient-to-r from-purple-200 via-pink-200 to-purple-200" />
 
-            <p className="mt-4 text-lg max-w-prose text-muted-foreground mx-auto">
+            <p className="mt-4 text-xl max-w-prose text-muted-foreground mx-auto">
               Try your color combinations on ready-to-use templates
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
               <Link
                 href="/templates"
-                className={cn(
-                  buttonVariants({ variant: "outline" }),
-                  "bg-[#d5adcc] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105"
-                )}
+                className="bg-[#d5adcc] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105"
               >
                 Templates
               </Link>
@@ -207,13 +188,10 @@ export default function Home() {
           </div>
 
           {/* Try Out Button */}
-          <div className="text-center mt-8">
+          <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
             <Link
               href="/templates"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "bg-[#d5adcc] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105"
-              )}
+              className="bg-[#d5adcc] shadow-md text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-105"
             >
               Try Out
             </Link>

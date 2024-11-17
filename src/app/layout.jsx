@@ -1,5 +1,5 @@
 import { AuthProvider } from "@/components/AuthProvider";
-import HeaderWithSession from "@/components/HeaderWithSession";
+import Header from "@/components/Header";
 import { Fredoka } from "next/font/google";
 import Footer from "../components/Footer";
 import "../styles/globals.css";
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={fredoka.className}>
           {/* <Header /> */}
-          <HeaderWithSession />
+          <Header />
           <main className="flex-grow">
             {children} {/* Main content goes here */}
           </main>

@@ -13,8 +13,8 @@ const Templates = () => {
         <div className="absolute top-8 right-40 w-16 h-16 bg-white bg-opacity-20 rounded-full"></div>
 
         {/* Text Content */}
-        <div className="text-center text-lg text-white">
-          <h1 className="text-2xl font-bold m-3">OUR PRE-MADE TEMPLATES</h1>
+        <div className="text-center text-lg text-gray-700">
+          <h1 className="text-3xl font-bold m-3">OUR PRE-MADE TEMPLATES</h1>
           <p className="text-lg m-3">
             Try your color combinations on{" "}
             <span className="text-pink-600 font-semibold">ready-to-use</span>{" "}
@@ -26,35 +26,51 @@ const Templates = () => {
       {/* Main Content Section */}
       <div className="min-h-screen py-10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Set to always have 2 columns with spacing */}
+          <div className="space-y-6">
+            {/* Card 1 */}
             <Card
               title="E-COMMERCE WEBSITE"
               description="Facilitate buying and selling goods and services online with this responsive E-commerce template."
-              imageSrc="/static/ecommerce.png"
-              altText="E-commerce"
+              illustrationSrc="/static/ecommerce.png"
+              illustrationAltText="E-commerce"
+              imageSrc="/static/templates/e-commerce.png"
+              imageAltText="E-commerce preview image"
               linkHref="/templates/e-commerce"
             />
+
+            {/* Card 2 */}
             <Card
               title="BLOG WEBSITE"
               description="Perfect for sharing articles and stories. This blog template is clean, customizable, and responsive."
-              imageSrc="/static/blog.png"
-              altText="Blog"
+              illustrationSrc="/static/blog.png"
+              illustrationAltText="Blog"
+              imageSrc="/static/templates/blog.png"
+              imageAltText="Blog preview image"
               linkHref="/templates/blog"
+              position="right"
             />
+
+            {/* Card 3 */}
             <Card
               title="PORTFOLIO WEBSITE"
               description="A sleek, modern template for displaying personal portfolios or creative works."
-              imageSrc="/static/portfolio.png"
-              altText="Portfolio"
+              illustrationSrc="/static/portfolio.png"
+              illustrationAltText="Portfolio"
+              imageSrc="/static/templates/portfolio.png"
+              imageAltText="Portfolio preview image"
               linkHref="/templates/portfolio"
             />
+
+            {/* Card 4 */}
             <Card
               title="LANDING PAGE"
               description="This template is designed for single-page websites and product launches."
-              imageSrc="/static/landing-page.png"
-              altText="Landing Page"
               linkHref="/templates/landing-page"
+              illustrationSrc="/static/landing-page.png"
+              illustrationAltText="Landing Page"
+              imageSrc="/static/templates/landing-page.png"
+              imageAltText="Landing page preview image"
+              position="right"
             />
           </div>
         </div>

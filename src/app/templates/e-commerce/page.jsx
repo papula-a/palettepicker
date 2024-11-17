@@ -1,17 +1,18 @@
-"use client"; // Required for Client Component 
+"use client";
 
 import FloatingColorPicker from "@/components/FloatingColorPicker";
 import Image from "next/image";
 import { useState } from "react";
 
+const DEFAULT_COLORS = {
+  primaryColor: "#333333",
+  secondaryColor: "#A8D5BA",
+  bgColor: "#F4F4F9",
+  tertiaryColor: "#ebebf0",
+};
+
 const Ecommerce = () => {
-  const [colors, setColors] = useState({
-    primaryColor: "#333333",
-    secondaryColor: "#A8D5BA",
-    bgColor: "#F4F4F9",
-    tertiaryColor: "#ebebf0"
-  });
-  
+  const [colors, setColors] = useState(DEFAULT_COLORS);
 
   const products = [
     { id: 1, name: "Product 1", price: "$99.99", image: "/static/chair.png" },
@@ -168,7 +169,11 @@ const Ecommerce = () => {
       </section>
 
       {/* Floating Color Picker */}
-      <FloatingColorPicker colors={colors} setColors={setColors} />
+      <FloatingColorPicker
+        colors={colors}
+        setColors={setColors}
+        defaultColors={DEFAULT_COLORS}
+      />
     </div>
   );
 };

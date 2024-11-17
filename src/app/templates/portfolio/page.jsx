@@ -1,24 +1,29 @@
 "use client"; // Required for Client Component
 
 import FloatingColorPicker from "@/components/FloatingColorPicker"; // Ensure the path is correct
+import Image from "next/image";
 import { useState } from "react";
+
+const DEFAULT_COLORS = {
+  primaryColor: "#333333",
+  secondaryColor: "#A8D5BA",
+  bgColor: "#F4F4F9",
+  tertiaryColor: "#ebebf0",
+};
 
 const Portfolio = () => {
   // Initialize color states
-  const [colors, setColors] = useState({
-    primaryColor: "#ffffff", // Default primary color for card backgrounds
-    secondaryColor: "#4CAF50", // Default secondary color (for buttons)
-    textColor: "#333333", // Default text color
-    bgColor: "#F4F4F9", // Default background color
-  });
+  const [colors, setColors] = useState(DEFAULT_COLORS);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: colors.bgColor }}>
       {/* Hero Section */}
       <section className="bg-white text-center pt-0">
-        <img
+        <Image
           src="/static/simone-biles-hero.jpg"
           alt="Simone Biles"
+          width={800}
+          height={96}
           className="w-full h-96 object-cover mb-4"
         />
         <h1
@@ -63,9 +68,11 @@ const Portfolio = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {/* Achievement Item */}
           <div className="border rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-            <img
+            <Image
               src="/static/achievement1.jpg"
               alt="2016 Rio Olympics"
+              width={800}
+              height={48}
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
@@ -80,9 +87,11 @@ const Portfolio = () => {
           </div>
           {/* Repeat for more achievements */}
           <div className="border rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-            <img
+            <Image
               src="/static/achievement2.jpg"
               alt="2019 World Championships"
+              width={800}
+              height={48}
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
@@ -102,13 +111,13 @@ const Portfolio = () => {
       <section className="py-16 px-4 bg-gray-200 text-center">
         <h2 className="text-4xl font-bold text-gray-800">What People Say</h2>
         <blockquote className="mt-4 italic text-gray-600">
-          "Simone is a true inspiration and a role model for athletes
-          everywhere."
+          &quot;Simone is a true inspiration and a role model for athletes
+          everywhere.&quot;
         </blockquote>
         <p className="mt-2 text-gray-700">- Coach Aimee Boorman</p>
         <blockquote className="mt-4 italic text-gray-600">
-          "She truly shows how women can become unstoppable and are capable of
-          almost anything. Always amazed by her!!"
+          &quot;She truly shows how women can become unstoppable and are capable
+          of almost anything. Always amazed by her!!&quot;
         </blockquote>
         <p className="mt-2 text-gray-700">- Diya Mustafa</p>
       </section>
@@ -151,7 +160,11 @@ const Portfolio = () => {
       </section>
 
       {/* Floating Color Picker */}
-      <FloatingColorPicker colors={colors} setColors={setColors} />
+      <FloatingColorPicker
+        colors={colors}
+        setColors={setColors}
+        defaultColors={DEFAULT_COLORS}
+      />
     </div>
   );
 };
