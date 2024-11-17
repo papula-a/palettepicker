@@ -12,7 +12,6 @@ const DEFAULT_COLORS = {
 };
 
 const Portfolio = () => {
-  // Initialize color states
   const [colors, setColors] = useState(DEFAULT_COLORS);
 
   return (

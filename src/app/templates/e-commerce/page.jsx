@@ -1,22 +1,26 @@
 "use client";
 
 import FloatingColorPicker from "@/components/FloatingColorPicker";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const DEFAULT_COLORS = {
+  primaryColor: "#333333",
+  secondaryColor: "#A8D5BA",
+  bgColor: "#F4F4F9",
+  tertiaryColor: "#ebebf0",
+};
 
 const Ecommerce = () => {
-  const [colors, setColors] = useState({
-    primaryColor: "#333333",
-    secondaryColor: "#A8D5BA",
-    bgColor: "#F4F4F9",
-    tertiaryColor: "#ebebf0",
-  });
+  const [colors, setColors] = useState(DEFAULT_COLORS);
 
-  const products = [
-    { id: 1, name: "Product 1", price: "$99.99", image: "/static/chair.png" },
-    { id: 2, name: "Product 2", price: "$129.99", image: "/static/lamp.png" },
-    { id: 3, name: "Product 3", price: "$89.99", image: "/static/table.png" },
-    { id: 4, name: "Product 4", price: "$149.99", image: "/static/sink.png" },
-  ];
+  const [redirectUrl, setRedirectUrl] = useState("");
+
+  useEffect(() => {
+    // Ensure dynamic values like window.location.href are only used client-side
+    if (typeof window !== "undefined") {
+      setRedirectUrl(encodeURIComponent(window.location.href));
+    }
+  }, []);
 
   const blogPosts = [
     {
@@ -110,4 +114,4 @@ const Ecommerce = () => {
   );
 };
 
-export default Blog;
+export default Ecommerce;
