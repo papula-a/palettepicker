@@ -1,4 +1,4 @@
-// /app/api/syncUser/route.ts
+import prisma from "@/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse } from "next/server";
 
@@ -15,8 +15,15 @@ export async function GET() {
       );
     }
 
+    const palettes = await prisma.palette.findMany({
+      where: {
+        userId: user.id,
+      },
+    });
+
     return NextResponse.json({
-      user: user,
+      user,
+      palettes,
     });
   } catch (error) {
     console.error("Error synchronizing user data:", error);
