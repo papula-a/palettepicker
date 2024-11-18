@@ -4,6 +4,7 @@ import { deletePalette } from "@/actions/palette";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
 
@@ -11,30 +12,53 @@ export default function Profile() {
   const [user, setUser] = useState(null);
   const [palettes, setPalettes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const router = useRouter();
 
-  // Fetch the user data when the component mounts
   useEffect(() => {
     async function fetchUserData() {
       try {
-        // Fetch user data from the server (adjust the URL based on your backend API)
         const response = await fetch("/api/user");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+
         const data = await response.json();
+
+        if (!data.user) {
+          throw new Error("No user data found");
+        }
 
         setUser(data.user);
         setPalettes(data.palettes || []);
       } catch (error) {
         console.error("Error fetching user data:", error);
-        window.location.href = "/"; // Redirect on error
+        setError(error.message);
+        router.push("/"); // More reliable client-side redirect
       } finally {
         setLoading(false);
       }
     }
 
     fetchUserData();
-  }, []);
+  }, [router]);
 
   if (loading) {
-    return <div>Loading...</div>; // Display loading state while fetching data
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen text-red-500">
+        <p>Error: {error}</p>
+        <Button onClick={() => router.push("/")}>Go to Home</Button>
+      </div>
+    );
   }
 
   return (
@@ -54,7 +78,6 @@ export default function Profile() {
             <p className="text-gray-600">Email: {user?.email}</p>
           </CardHeader>
         </Card>
-
         <Card className="w-full max-w-6xl bg-white shadow-lg bg-opacity-70">
           <CardHeader>
             <CardTitle>Saved Color Palettes</CardTitle>
@@ -97,7 +120,7 @@ export default function Profile() {
                 </div>
               ))
             ) : (
-              <p className="text-gray-600">No palettes found.</p>
+              <p className="text-gray-600 text-center">No palettes found.</p>
             )}
           </CardContent>
         </Card>
