@@ -20,6 +20,5 @@ export async function middleware(request) {
 export const config = {
   matcher: [
     "/user/:path*", // Protects all routes under /user
-    "/api/user/:path*", // Protects all API routes under /api/user
   ],
 };
