@@ -1,20 +1,47 @@
+// Profile.tsx
 import { deletePalette } from "@/actions/palette";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import prisma from "@/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
 import { FaUser } from "react-icons/fa";
 
-export default async function Profile() {
+// Mark the page as dynamic
+export const dynamic = "force-dynamic";
+
+// Separate the data fetching logic
+async function getUserData() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
+  if (!user) {
+    return null;
+  }
+
+  // Fetch palettes after confirming user exists
   const palettes = await prisma.palette.findMany({
     where: {
-      userId: user?.id,
+      userId: user.id,
     },
   });
+
+  return {
+    user,
+    palettes,
+  };
+}
+
+export default async function Profile() {
+  const data = await getUserData();
+
+  // Handle unauthorized access
+  if (!data) {
+    redirect("/");
+  }
+
+  const { user, palettes } = data;
 
   return (
     <div className="min-h-screen flex flex-col py-6 p-6">
@@ -28,7 +55,7 @@ export default async function Profile() {
               </AvatarFallback>
             </Avatar>
             <h2 className="text-xl font-semibold">
-              {user?.given_name + " " + user?.family_name}
+              {user?.given_name} {user?.family_name}
             </h2>
             <p className="text-gray-600">Email: {user?.email}</p>
           </CardHeader>

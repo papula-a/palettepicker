@@ -13,9 +13,11 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useCallback, useState } from "react";
 
 const FloatingColorPicker = ({ colors, setColors, defaultColors }) => {
+  const { isAuthenticated } = useKindeBrowserClient();
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
   const { toast } = useToast();
@@ -77,12 +79,14 @@ const FloatingColorPicker = ({ colors, setColors, defaultColors }) => {
         <div className="fixed bottom-20 right-5 z-50 animate-in fade-in slide-in-from-bottom-5">
           <ColorPicker colors={colors} setColors={setColors} />
           <div className="mt-4 flex justify-end">
-            <Button
-              onClick={() => setIsSaveDialogOpen(true)}
-              className="bg-blue-500 text-white hover:bg-blue-600"
-            >
-              Save Palette
-            </Button>
+            {isAuthenticated && (
+              <Button
+                onClick={() => setIsSaveDialogOpen(true)}
+                className="bg-blue-500 text-white hover:bg-blue-600"
+              >
+                Save Palette
+              </Button>
+            )}
           </div>
         </div>
       )}

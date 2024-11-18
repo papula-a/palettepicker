@@ -1,6 +1,51 @@
 import Card from "@/components/Card";
 
 const Templates = () => {
+  const templates = [
+    {
+      title: "E-COMMERCE WEBSITE",
+      description:
+        "Facilitate buying and selling goods and services online with this responsive E-commerce template.",
+      imageSrc: "/static/templates/e-commerce.png",
+      imageAltText: "E-commerce preview image",
+      linkHref: "/templates/e-commerce",
+    },
+    {
+      title: "BLOG WEBSITE",
+      description:
+        "Perfect for sharing articles and stories. This blog template is clean, customizable, and responsive.",
+      imageSrc: "/static/templates/blog.png",
+      imageAltText: "Blog preview image",
+      linkHref: "/templates/blog",
+      position: "right",
+    },
+    {
+      title: "SHOWCASE PAGE",
+      description:
+        "This template is designed for showcasing color palette website",
+      imageSrc: "/static/templates/showcase.png",
+      imageAltText: "Landing page preview image",
+      linkHref: "/templates/showcase",
+    },
+    {
+      title: "LANDING PAGE",
+      description:
+        "This template is designed for single-page websites and product launches.",
+      imageSrc: "/static/templates/landing-page.png",
+      imageAltText: "Landing page preview image",
+      linkHref: "/templates/landing-page",
+      position: "right",
+    },
+    {
+      title: "PORTFOLIO WEBSITE",
+      description:
+        "A sleek, modern template for displaying personal portfolios or creative works.",
+      imageSrc: "/static/templates/portfolio.png",
+      imageAltText: "Portfolio preview image",
+      linkHref: "/templates/portfolio",
+    },
+  ];
+
   return (
     <div>
       {/* Header Section with Gradient Background and Randomly Positioned Semi-Transparent Circles */}
@@ -27,51 +72,11 @@ const Templates = () => {
       <div className="min-h-screen py-10">
         <div className="container mx-auto px-4">
           <div className="space-y-6">
-            {/* Card 1 */}
-            <Card
-              title="E-COMMERCE WEBSITE"
-              description="Facilitate buying and selling goods and services online with this responsive E-commerce template."
-              illustrationSrc="/static/ecommerce.png"
-              illustrationAltText="E-commerce"
-              imageSrc="/static/templates/e-commerce.png"
-              imageAltText="E-commerce preview image"
-              linkHref="/templates/e-commerce"
-            />
-
-            {/* Card 2 */}
-            <Card
-              title="BLOG WEBSITE"
-              description="Perfect for sharing articles and stories. This blog template is clean, customizable, and responsive."
-              illustrationSrc="/static/blog.png"
-              illustrationAltText="Blog"
-              imageSrc="/static/templates/blog.png"
-              imageAltText="Blog preview image"
-              linkHref="/templates/blog"
-              position="right"
-            />
-
-            {/* Card 3 */}
-            <Card
-              title="PORTFOLIO WEBSITE"
-              description="A sleek, modern template for displaying personal portfolios or creative works."
-              illustrationSrc="/static/portfolio.png"
-              illustrationAltText="Portfolio"
-              imageSrc="/static/templates/portfolio.png"
-              imageAltText="Portfolio preview image"
-              linkHref="/templates/portfolio"
-            />
-
-            {/* Card 4 */}
-            <Card
-              title="LANDING PAGE"
-              description="This template is designed for single-page websites and product launches."
-              linkHref="/templates/landing-page"
-              illustrationSrc="/static/landing-page.png"
-              illustrationAltText="Landing Page"
-              imageSrc="/static/templates/landing-page.png"
-              imageAltText="Landing page preview image"
-              position="right"
-            />
+            {templates.map((template, index) => (
+              <div key={index} className="mb-16 last:mb-0">
+                <Card {...template} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

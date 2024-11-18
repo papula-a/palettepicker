@@ -1,338 +1,395 @@
 "use client";
 
 import FloatingColorPicker from "@/components/FloatingColorPicker";
-import Image from "next/image";
-import { useState } from "react";
+import { Calendar, Heart, Moon, Star, Sun, Users, Wind } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const DEFAULT_COLORS = {
-  primaryColor: "#333333",
-  secondaryColor: "#A8D5BA",
-  bgColor: "#F4F4F9",
-  tertiaryColor: "#ebebf0",
+  primaryColor: "#2D3047", // Deep blue-grey for main text and accents
+  secondaryColor: "#93B7BE", // Soft blue for buttons and highlights
+  bgColor: "#F7F9FB", // Light grey-blue for background
+  tertiaryColor: "#E0E2DB", // Warm grey for cards and secondary elements
 };
 
 const LandingPage = () => {
   const [colors, setColors] = useState(DEFAULT_COLORS);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const currentProgress = window.scrollY;
+      setScrollProgress((currentProgress / totalScroll) * 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div
-      className="min-h-screen font-sans relative overflow-hidden"
-      style={{
-        background: `linear-gradient(135deg, ${colors.bgColor} 0%, ${colors.primaryColor} 100%)`,
-      }}
-    >
-      {/* Sunburst Background */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <svg className="w-96 h-96 opacity-10" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" fill={colors.secondaryColor} />
-        </svg>
+    <div className="min-h-screen font-sans relative overflow-hidden">
+      {/* Progress Bar */}
+      <div
+        className="fixed top-0 left-0 h-1 z-50 transition-all duration-300"
+        style={{
+          width: `${scrollProgress}%`,
+          backgroundColor: colors.secondaryColor,
+        }}
+      />
+
+      {/* Background with animated gradient */}
+      <div
+        className="fixed inset-0 transition-all duration-500"
+        style={{
+          background: `linear-gradient(135deg, ${colors.bgColor} 0%, ${colors.primaryColor}40 100%)`,
+        }}
+      />
+
+      {/* Animated Background Shapes */}
+      <div className="fixed inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full mix-blend-multiply filter blur-xl animate-float"
+            style={{
+              width: Math.random() * 300 + 100 + "px",
+              height: Math.random() * 300 + 100 + "px",
+              left: Math.random() * 100 + "%",
+              top: Math.random() * 100 + "%",
+              backgroundColor:
+                i % 2 === 0 ? colors.secondaryColor : colors.tertiaryColor,
+              opacity: 0.1,
+              animation: `float ${
+                Math.random() * 10 + 10
+              }s infinite ease-in-out`,
+              animationDelay: `${i * -0.5}s`,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Floating Bubbles */}
-      <div
-        className="bubble bubble1"
-        style={{ backgroundColor: colors.tertiaryColor }}
-      ></div>
-      <div
-        className="bubble bubble2"
-        style={{ backgroundColor: colors.secondaryColor }}
-      ></div>
-      <div
-        className="bubble bubble3"
-        style={{ backgroundColor: colors.primaryColor }}
-      ></div>
-      <div
-        className="bubble bubble4"
-        style={{ backgroundColor: colors.tertiaryColor }}
-      ></div>
-      <div
-        className="bubble bubble5"
-        style={{ backgroundColor: colors.secondaryColor }}
-      ></div>
-      <div
-        className="bubble bubble6"
-        style={{ backgroundColor: colors.primaryColor }}
-      ></div>
-
       {/* Hero Section */}
-      <section className="text-center py-48 relative flex flex-col items-center justify-center z-10">
-        <h1
-          className="text-6xl font-extrabold"
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-20">
+        <div className="absolute inset-0 flex items-center justify-center opacity-20">
+          <div className="relative w-96 h-96">
+            <div className="absolute inset-0 animate-spin-slow">
+              <svg viewBox="0 0 100 100" className="w-full h-full">
+                {[...Array(12)].map((_, i) => (
+                  <line
+                    key={i}
+                    x1="50"
+                    y1="10"
+                    x2="50"
+                    y2="25"
+                    stroke={colors.primaryColor}
+                    strokeWidth="2"
+                    transform={`rotate(${i * 30} 50 50)`}
+                  />
+                ))}
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <h1
+            className="text-7xl font-extrabold mb-6 tracking-tight"
+            style={{ color: colors.primaryColor }}
+          >
+            Find Your Inner Peace
+          </h1>
+          <p
+            className="text-2xl mb-8 leading-relaxed"
+            style={{ color: colors.primaryColor }}
+          >
+            Discover the transformative power of meditation through guided
+            sessions designed to bring harmony to your mind, body, and spirit.
+          </p>
+          <div className="flex gap-4 justify-center">
+            <button
+              className="px-8 py-4 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-300"
+              style={{ backgroundColor: colors.secondaryColor }}
+            >
+              Start Your Journey
+            </button>
+            <button
+              className="px-8 py-4 rounded-lg font-semibold transform hover:scale-105 transition-all duration-300"
+              style={{
+                backgroundColor: colors.tertiaryColor,
+                color: colors.primaryColor,
+              }}
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section with Icons */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2
+            className="text-5xl font-bold text-center mb-16"
+            style={{ color: colors.primaryColor }}
+          >
+            Your Path to Mindfulness
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Moon className="w-8 h-8" />,
+                title: "Evening Meditation",
+                description:
+                  "Unwind with calming sessions designed for better sleep and relaxation.",
+              },
+              {
+                icon: <Sun className="w-8 h-8" />,
+                title: "Morning Routines",
+                description:
+                  "Start your day with energizing meditation practices.",
+              },
+              {
+                icon: <Wind className="w-8 h-8" />,
+                title: "Breath Work",
+                description:
+                  "Master breathing techniques for stress relief and focus.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="p-8 rounded-xl transform hover:scale-105 transition-all duration-300"
+                style={{ backgroundColor: colors.tertiaryColor }}
+              >
+                <div
+                  className="rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto"
+                  style={{
+                    backgroundColor: colors.secondaryColor,
+                    color: colors.bgColor,
+                  }}
+                >
+                  {feature.icon}
+                </div>
+                <h3
+                  className="text-xl font-semibold mb-4 text-center"
+                  style={{ color: colors.primaryColor }}
+                >
+                  {feature.title}
+                </h3>
+                <p
+                  className="text-center"
+                  style={{ color: colors.primaryColor }}
+                >
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics Section */}
+      <section className="relative py-20 px-4">
+        <div
+          className="max-w-7xl mx-auto p-12 rounded-2xl"
+          style={{ backgroundColor: colors.tertiaryColor }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            {[
+              {
+                icon: <Heart className="w-6 h-6" />,
+                value: "10K+",
+                label: "Happy Meditators",
+              },
+              {
+                icon: <Users className="w-6 h-6" />,
+                value: "500+",
+                label: "Daily Sessions",
+              },
+              {
+                icon: <Calendar className="w-6 h-6" />,
+                value: "365",
+                label: "Days Active",
+              },
+              {
+                icon: <Star className="w-6 h-6" />,
+                value: "4.9",
+                label: "User Rating",
+              },
+            ].map((stat, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div
+                  className="rounded-full w-12 h-12 flex items-center justify-center mb-4"
+                  style={{
+                    backgroundColor: colors.secondaryColor,
+                    color: colors.bgColor,
+                  }}
+                >
+                  {stat.icon}
+                </div>
+                <h3
+                  className="text-3xl font-bold mb-2"
+                  style={{ color: colors.primaryColor }}
+                >
+                  {stat.value}
+                </h3>
+                <p style={{ color: colors.primaryColor }}>{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="relative py-20 px-4">
+        <h2
+          className="text-5xl font-bold text-center mb-16"
           style={{ color: colors.primaryColor }}
         >
-          Find Your Peace
-        </h1>
-        <p
-          className="mt-4 text-2xl text-opacity-90 max-w-2xl mx-auto"
-          style={{ color: colors.textColor }}
-        >
-          Join us for guided meditation sessions designed to help you relax and
-          rejuvenate your mind and body.
-        </p>
-        <a
-          href="#features"
-          className="mt-8 inline-block font-semibold"
-          style={{
-            backgroundColor: colors.secondaryColor,
-            color: "#ffffff",
-            padding: "14px 28px",
-            borderRadius: "8px",
-            transition: "background-color 0.3s ease",
-          }}
-        >
-          Get Started
-        </a>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-20 px-6 relative z-0">
-        <h2
-          className="text-5xl font-bold text-center mb-10"
-          style={{ color: colors.textColor }}
-        >
-          Why Choose Us?
+          What Our Community Says
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-8">
-          <div
-            className="rounded-lg p-8 shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-            style={{ backgroundColor: colors.tertiaryColor }}
-          >
-            <h3
-              className="text-2xl font-semibold mb-4"
-              style={{ color: colors.textColor }}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              quote:
+                "This platform transformed my daily routine. I've never felt more centered and peaceful.",
+              author: "Sarah J.",
+              role: "Practicing for 6 months",
+            },
+            {
+              quote:
+                "The guided sessions are perfect for beginners. I've learned so much about mindfulness.",
+              author: "Michael R.",
+              role: "Practicing for 1 year",
+            },
+            {
+              quote:
+                "The community support here is amazing. It keeps me motivated on my meditation journey.",
+              author: "Emily L.",
+              role: "Practicing for 3 months",
+            },
+          ].map((testimonial, index) => (
+            <div
+              key={index}
+              className="p-8 rounded-xl"
+              style={{ backgroundColor: colors.tertiaryColor }}
             >
-              Guided Sessions
-            </h3>
-            <p style={{ color: colors.textColor }}>
-              Experience our expert-led meditation sessions that cater to all
-              levels.
-            </p>
-          </div>
-          <div
-            className="rounded-lg p-8 shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-            style={{ backgroundColor: colors.tertiaryColor }}
-          >
-            <h3
-              className="text-2xl font-semibold mb-4"
-              style={{ color: colors.textColor }}
-            >
-              Flexible Scheduling
-            </h3>
-            <p style={{ color: colors.textColor }}>
-              Join sessions that fit your schedule, whether you&apos;re at home
-              or on the go.
-            </p>
-          </div>
-          <div
-            className="rounded-lg p-8 shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-            style={{ backgroundColor: colors.tertiaryColor }}
-          >
-            <h3
-              className="text-2xl font-semibold mb-4"
-              style={{ color: colors.textColor }}
-            >
-              Community Support
-            </h3>
-            <p style={{ color: colors.textColor }}>
-              Connect with fellow meditators and share your journey towards
-              mindfulness.
-            </p>
-          </div>
+              <p
+                className="text-lg mb-6 italic"
+                style={{ color: colors.primaryColor }}
+              >
+                &quot;{testimonial.quote}&quot;
+              </p>
+              <div>
+                <p
+                  className="font-semibold"
+                  style={{ color: colors.primaryColor }}
+                >
+                  {testimonial.author}
+                </p>
+                <p className="text-sm" style={{ color: colors.secondaryColor }}>
+                  {testimonial.role}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Discover Your Journey Section */}
-      <section className="py-16">
-        <div className="container mx-auto text-center">
+      {/* Mood Tracker Section */}
+      <section className="relative py-20 px-4">
+        <div
+          className="max-w-2xl mx-auto p-8 rounded-xl"
+          style={{ backgroundColor: colors.tertiaryColor }}
+        >
           <h2
-            className="text-4xl font-bold mb-8"
-            style={{ color: colors.textColor }}
+            className="text-3xl font-bold text-center mb-8"
+            style={{ color: colors.primaryColor }}
           >
-            Discover Your Journey
+            Track Your Mindfulness Journey
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <form className="flex flex-col items-center space-y-6">
+            <label className="text-lg" style={{ color: colors.primaryColor }}>
+              How are you feeling today?
+            </label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              step="1"
+              defaultValue="3"
+              className="w-full max-w-md"
+              style={{ accentColor: colors.secondaryColor }}
+            />
             <div
-              className="p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-              style={{ backgroundColor: colors.tertiaryColor }}
+              className="flex justify-between w-full max-w-md"
+              style={{ color: colors.primaryColor }}
             >
-              <Image
-                src="/static/icon1.png"
-                alt="Start Your Practice"
-                width={64}
-                height={64}
-                className="mb-4 mx-auto"
-              />
-              <h3
-                className="text-xl font-semibold mb-2"
-                style={{ color: colors.textColor }}
-              >
-                Start Your Practice
-              </h3>
-              <p style={{ color: colors.textColor }}>
-                Begin with simple, guided sessions to ease into your meditation
-                journey.
-              </p>
+              <span>Stressed</span>
+              <span>Neutral</span>
+              <span>Peaceful</span>
             </div>
-            <div
-              className="p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-              style={{ backgroundColor: colors.tertiaryColor }}
-            >
-              <Image
-                src="/static/icon2.png"
-                alt="Track Your Progress"
-                width={64}
-                height={64}
-                className="mb-4 mx-auto"
-              />
-              <h3
-                className="text-xl font-semibold mb-2"
-                style={{ color: colors.textColor }}
-              >
-                Track Your Progress
-              </h3>
-              <p style={{ color: colors.textColor }}>
-                Utilize our tools to monitor your meditation frequency and
-                improvements.
-              </p>
-            </div>
-            <div
-              className="p-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
-              style={{ backgroundColor: colors.tertiaryColor }}
-            >
-              <Image
-                src="/static/icon3.png"
-                alt="Join a Community"
-                width={64}
-                height={64}
-                className="mb-4 mx-auto"
-              />
-              <h3
-                className="text-xl font-semibold mb-2"
-                style={{ color: colors.textColor }}
-              >
-                Join a Community
-              </h3>
-              <p style={{ color: colors.textColor }}>
-                Engage with fellow meditators, share experiences, and motivate
-                each other.
-              </p>
-            </div>
-          </div>
+          </form>
         </div>
       </section>
-      {/* User Mood Section */}
-      {/* User Mood Section */}
-      <section className="py-10 px-6 text-center">
-        <h2
-          className="text-3xl font-bold mb-6"
-          style={{ color: colors.textColor }}
-        >
-          How Are You Feeling Today?
-        </h2>
-        <form className="flex flex-col items-center space-y-4">
-          <label className="text-lg mb-2" style={{ color: colors.textColor }}>
-            Slide to indicate your mood:
-          </label>
-          <input
-            type="range"
-            min="1"
-            max="5"
-            step="1"
-            defaultValue="3"
-            className="w-64"
-            onChange={(e) => console.log(`Mood rating: ${e.target.value}`)}
-            style={{ accentColor: colors.primaryColor }}
-          />
-          <div
-            className="flex justify-between w-64 mt-2"
-            style={{ color: colors.textColor }}
+
+      {/* CTA Section */}
+      <section className="relative py-20 px-4 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className="text-5xl font-bold mb-8"
+            style={{ color: colors.primaryColor }}
           >
-            <span>Very Bad</span>
-            <span>Neutral</span>
-            <span>Very Good</span>
-          </div>
-        </form>
+            Begin Your Meditation Journey Today
+          </h2>
+          <p className="text-xl mb-12" style={{ color: colors.primaryColor }}>
+            Join thousands of others who have discovered the power of mindful
+            meditation.
+          </p>
+          <button
+            className="px-12 py-6 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-300 text-lg"
+            style={{ backgroundColor: colors.secondaryColor }}
+          >
+            Start Free Trial
+          </button>
+        </div>
       </section>
 
-      {/* Floating Color Picker */}
       {/* Floating Color Picker */}
       <FloatingColorPicker
         colors={colors}
         setColors={setColors}
         defaultColors={DEFAULT_COLORS}
-        className="relative z-50"
+        className="fixed bottom-4 right-4 z-50"
       />
 
-      {/* Bubble CSS */}
+      {/* Animation Styles */}
       <style jsx>{`
-        .bubble {
-          position: absolute;
-          border-radius: 50%;
-          opacity: 0.15;
-          animation: float 10s infinite ease-in-out;
-        }
-
-        .bubble1 {
-          width: 100px;
-          height: 100px;
-          bottom: 10%;
-          left: 10%;
-          animation-delay: 0s;
-        }
-
-        .bubble2 {
-          width: 150px;
-          height: 150px;
-          bottom: 20%;
-          right: 15%;
-          animation-delay: 2s;
-        }
-
-        .bubble3 {
-          width: 80px;
-          height: 80px;
-          top: 15%;
-          left: 25%;
-          animation-delay: 4s;
-        }
-
-        .bubble4 {
-          width: 60px;
-          height: 60px;
-          top: 10%;
-          right: 20%;
-          animation-delay: 3s;
-        }
-
-        .bubble5 {
-          width: 120px;
-          height: 120px;
-          bottom: 5%;
-          left: 30%;
-          animation-delay: 1s;
-        }
-
-        .bubble6 {
-          width: 90px;
-          height: 90px;
-          top: 25%;
-          right: 10%;
-          animation-delay: 5s;
-        }
-
         @keyframes float {
-          0% {
-            transform: translateY(0);
-            opacity: 0.1;
+          0%,
+          100% {
+            transform: translateY(0) scale(1);
           }
           50% {
-            transform: translateY(-20px);
-            opacity: 0.3;
+            transform: translateY(-20px) scale(1.05);
           }
-          100% {
-            transform: translateY(0);
-            opacity: 0.1;
+        }
+
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
           }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-float {
+          animation: float 20s infinite ease-in-out;
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
         }
       `}</style>
     </div>
