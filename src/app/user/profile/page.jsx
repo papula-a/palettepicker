@@ -20,11 +20,6 @@ export default function Profile() {
         const response = await fetch("/api/user");
         const data = await response.json();
 
-        if (!data.user) {
-          window.location.href = "/"; // Redirect to login or home if no user data
-          return;
-        }
-
         setUser(data.user);
         setPalettes(data.palettes || []);
       } catch (error) {
