@@ -2,17 +2,19 @@ import prisma from "@/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse } from "next/server";
 
-// This function runs automatically when the API route is called
-export async function GET() {
+export async function GET(request) {
   try {
-    const { getUser } = getKindeServerSession();
-    const user = await getUser();
+    const { getUser, isAuthenticated } = getKindeServerSession();
 
+    // First, check if user is authenticated
+    const isUserAuthenticated = await isAuthenticated();
+    if (!isUserAuthenticated) {
+      return NextResponse.redirect(new URL("/api/auth/login", request.url));
+    }
+
+    const user = await getUser();
     if (!user) {
-      return NextResponse.json(
-        { status: "error", message: "No user data found" },
-        { status: 400 }
-      );
+      return NextResponse.redirect(new URL("/api/auth/login", request.url));
     }
 
     const palettes = await prisma.palette.findMany({
@@ -22,13 +24,19 @@ export async function GET() {
     });
 
     return NextResponse.json({
-      user,
+      user: {
+        id: user.id,
+        email: user.email,
+        given_name: user.given_name,
+        family_name: user.family_name,
+        picture: user.picture,
+      },
       palettes,
     });
   } catch (error) {
-    console.error("Error synchronizing user data:", error);
+    console.error("Error in user API route:", error);
     return NextResponse.json(
-      { status: "error", message: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
