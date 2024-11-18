@@ -251,21 +251,21 @@ const Portfolio = () => {
                 year: "2016",
                 title: "Rio Olympics",
                 description: "Won 4 Gold medals and 1 Bronze medal",
-                image: "/static/achievement1.jpg",
+                image: "/static/achievement11.jpg",
               },
               {
                 year: "2019",
                 title: "World Championships",
                 description:
                   "Most decorated gymnast in World Championship history",
-                image: "/static/achievement1.jpg",
+                image: "/static/achievement2.jpg",
               },
               {
                 year: "2021",
                 title: "Tokyo Olympics",
                 description:
                   "Demonstrated courage by prioritizing mental health",
-                image: "/static/achievement1.jpg",
+                image: "/static/achievement3.jpg",
               },
             ].map((achievement, index) => (
               <div

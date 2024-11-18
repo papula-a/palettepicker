@@ -185,7 +185,24 @@ export default function Home() {
               />
               <h3 className="text-lg font-semibold">Landing Page</h3>
             </div>
+             {/* Template 5 */}
+             <div
+              className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            >
+              <Image
+                src="/static/showcase.png"
+                alt="Showcase Page"
+                width={48}
+                height={48}
+                className="mb-4"
+              />
+              <h3 className="text-lg font-semibold">Showcase Page</h3>
+            </div>
+         
           </div>
+          
 
           {/* Try Out Button */}
           <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
