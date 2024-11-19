@@ -40,45 +40,11 @@ const LandingPage = () => {
 
       {/* Background with animated gradient */}
       <div
-        className="fixed inset-0 transition-all duration-500"
+        className="absolute inset-0 transition-all duration-500 z-[-1]"
         style={{
           background: `linear-gradient(135deg, ${colors.bgColor} 0%, ${colors.primaryColor}40 100%)`,
         }}
       />
-
-{/* Animated Background Shapes */}
-<div className="fixed inset-0 overflow-hidden">
-  {[...Array(20)].map((_, i) => {
-    // Dynamically calculate the maximum height for the shapes
-    const viewportHeight = window.innerHeight;
-    const footerHeight = 200; // Replace with your footer's actual height
-    const maxShapeHeight = viewportHeight - footerHeight;
-
-    const randomTop = Math.random() * (maxShapeHeight / viewportHeight) * 100; // Adjust top position dynamically
-    return (
-      <div
-        key={i}
-        className="absolute rounded-full mix-blend-multiply filter blur-xl animate-float"
-        style={{
-          width: Math.random() * 300 + 100 + "px",
-          height: Math.random() * 300 + 100 + "px",
-          left: Math.random() * 100 + "%", // Random left position
-          top: `${randomTop}%`, // Ensure top stays above the footer
-          backgroundColor:
-            i % 2 === 0 ? colors.secondaryColor : colors.tertiaryColor,
-          opacity: 0.1,
-          animationName: "float",
-          animationDuration: `${Math.random() * 10 + 10}s`,
-          animationTimingFunction: "ease-in-out",
-          animationIterationCount: "infinite",
-          animationDelay: `${i * -0.5}s`, // Explicitly defined to avoid conflict
-        }}
-      />
-    );
-  })}
-</div>
-
-
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-20">
