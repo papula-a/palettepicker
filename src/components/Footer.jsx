@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-purple-400 to-pink-400 text-white pt-8">
+    <footer className="bg-gradient-to-r from-purple-400 to-pink-400 text-white pt-1">
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           {/* Logo and description */}
