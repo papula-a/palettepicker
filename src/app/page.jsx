@@ -116,13 +116,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Updated Templates Section without Text */}
       <div className="bg-gradient-to-b from-purple-100 to-pink-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-center mb-12 text-black">
             Our Templates
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {/* Template 1 */}
             <div
               className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
@@ -131,8 +130,8 @@ export default function Home() {
               <Image
                 src="/static/ecommerce.png"
                 alt="E-commerce"
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 className="mb-4"
               />
               <h3 className="text-lg font-semibold">E-commerce Website</h3>
@@ -147,8 +146,8 @@ export default function Home() {
               <Image
                 src="/static/blog.png"
                 alt="Blog"
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 className="mb-4"
               />
               <h3 className="text-lg font-semibold">Blog Website</h3>
@@ -163,8 +162,8 @@ export default function Home() {
               <Image
                 src="/static/portfolio.png"
                 alt="Portfolio"
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 className="mb-4"
               />
               <h3 className="text-lg font-semibold">Portfolio Website</h3>
@@ -179,30 +178,29 @@ export default function Home() {
               <Image
                 src="/static/landing-page.png"
                 alt="Landing Page"
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 className="mb-4"
               />
               <h3 className="text-lg font-semibold">Landing Page</h3>
             </div>
-             {/* Template 5 */}
-             <div
+
+            {/* Template 5 */}
+            <div
               className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
               data-aos="zoom-in"
-              data-aos-delay="300"
+              data-aos-delay="400"
             >
               <Image
                 src="/static/showcase.png"
                 alt="Showcase Page"
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 className="mb-4"
               />
               <h3 className="text-lg font-semibold">Showcase Page</h3>
             </div>
-         
           </div>
-          
 
           {/* Try Out Button */}
           <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
