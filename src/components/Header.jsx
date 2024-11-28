@@ -30,8 +30,9 @@ import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const { isAuthenticated, isLoading, user } = useKindeBrowserClient();
 
@@ -95,7 +96,7 @@ const Header = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Avatar className="cursor-pointer">
-                    <AvatarImage src={user.picture} alt={user.given_name} />
+                    <AvatarImage src={user?.picture} alt={user?.given_name} />
                     <AvatarFallback>PP</AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
@@ -103,7 +104,7 @@ const Header = () => {
                   <DropdownMenuLabel className="text-yellow-500 text-lg flex items-center space-x-2">
                     <FaUser className="text-gray-600" />
                     <span>
-                      {user.given_name} {user.family_name}
+                      {user?.given_name} {user?.family_name}
                     </span>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
@@ -118,17 +119,6 @@ const Header = () => {
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  {/* <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <Link href="/user/palettes" className="cursor-pointer">
-                        My Palettes
-                      </Link>
-                      <DropdownMenuShortcut className="text-[#C084FC]">
-                        ⌘E
-                      </DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator /> */}
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
                       <LogoutLink>Log out</LogoutLink>

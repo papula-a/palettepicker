@@ -1,4 +1,3 @@
-import { AuthProvider } from "@/components/AuthProvider";
 import Header from "@/components/Header";
 import { Fredoka } from "next/font/google";
 import Footer from "../components/Footer";
@@ -17,17 +16,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AuthProvider>
-      <html lang="en">
-        <body className={fredoka.className}>
-          {/* <Header /> */}
-          <Header />
-          <main className="flex-grow">
-            {children} {/* Main content goes here */}
-          </main>
-          <Footer />
-        </body>
-      </html>
-    </AuthProvider>
+    <html lang="en">
+      <body className={fredoka.className}>
+        {/* <Header /> */}
+        <Header />
+        <main className="flex-grow">
+          {children} {/* Main content goes here */}
+        </main>
+        <Footer />
+      </body>
+    </html>
   );
 }

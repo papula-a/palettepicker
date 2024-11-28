@@ -4,6 +4,20 @@ import prisma from "@/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { revalidatePath } from "next/cache";
 
+export async function getPalettes(id) {
+  try {
+    const palettes = await prisma.palette.findMany({
+      where: {
+        userId: id,
+      },
+    });
+    return palettes;
+  } catch (error) {
+    console.error("Error fetching palettes:", error);
+    return [];
+  }
+}
+
 export async function deletePalette(formData) {
   const id = formData.get("id");
 
