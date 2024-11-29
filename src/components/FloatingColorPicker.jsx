@@ -1,6 +1,6 @@
 "use client";
 
-import { savePalette } from "@/actions/palette";
+import { savePalette } from "@/app/actions/palette";
 import ColorPicker from "@/components/ColorPicker";
 import { Button } from "@/components/ui/button";
 import {

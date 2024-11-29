@@ -1,4 +1,4 @@
-import { deletePalette } from "@/actions/palette";
+import { deletePalette } from "@/app/actions/palette";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function UserPalettesList({ palettes }) {

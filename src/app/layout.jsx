@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={fredoka.className}>
-        {/* <Header /> */}
         <Header />
         <main className="flex-grow">
           {children} {/* Main content goes here */}
