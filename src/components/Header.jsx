@@ -110,7 +110,7 @@ const Header = () => {
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      <Link href="/user/profile" className="cursor-pointer">
+                      <Link href="/profile" className="cursor-pointer">
                         Profile
                       </Link>
                       <DropdownMenuShortcut className="text-yellow-500">

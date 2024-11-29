@@ -2,6 +2,7 @@ import { deletePalette, getPalettes } from "@/app/actions/palette";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
 import { FaUser } from "react-icons/fa";
 
 const Profile = async () => {
@@ -11,7 +12,7 @@ const Profile = async () => {
   const isUserAuthenticated = isAuthenticated();
 
   if (!isUserAuthenticated) {
-    return <div>Not authenticated</div>;
+    redirect("/api/auth/login");
   }
 
   const user = await getUser();
