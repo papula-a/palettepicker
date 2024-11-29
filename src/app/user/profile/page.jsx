@@ -17,7 +17,7 @@ const Profile = async () => {
   const user = await getUser();
 
   // Fetch palettes for the authenticated user
-  const palettes = await getPalettes(user.id);
+  const palettes = await getPalettes(user?.id);
 
   return (
     <div className="min-h-screen flex flex-col py-6 p-6">
@@ -25,15 +25,15 @@ const Profile = async () => {
         <Card className="w-full max-w-6xl p-4 mb-8 bg-white shadow-lg bg-opacity-70">
           <CardHeader className="flex items-center justify-center">
             <Avatar className="w-40 h-40 mb-4">
-              <AvatarImage src={user.picture} alt={user.given_name} />
+              <AvatarImage src={user?.picture} alt={user?.given_name} />
               <AvatarFallback>
                 <FaUser className="text-6xl" />
               </AvatarFallback>
             </Avatar>
             <h2 className="text-xl font-semibold">
-              {user.given_name} {user.family_name}
+              {user?.given_name} {user?.family_name}
             </h2>
-            <p className="text-gray-600">Email: {user.email}</p>
+            <p className="text-gray-600">Email: {user?.email}</p>
           </CardHeader>
         </Card>
 
@@ -45,11 +45,11 @@ const Profile = async () => {
             {palettes.length > 0 ? (
               palettes.map((palette) => (
                 <div
-                  key={palette.id}
+                  key={palette?.id}
                   className="flex justify-between items-center p-2 border-b last:border-0"
                 >
                   <div className="flex space-x-4">
-                    {palette.colors.map((color, index) => (
+                    {palette?.colors.map((color, index) => (
                       <div key={index} className="flex items-center space-x-2">
                         <div
                           className="w-12 h-12 rounded"
@@ -62,10 +62,10 @@ const Profile = async () => {
                     ))}
                   </div>
                   <span className="text-xl text-gray-700 font-medium min-w-[200px] text-center">
-                    {palette.name}
+                    {palette?.name}
                   </span>
                   <form action={deletePalette}>
-                    <input type="hidden" name="id" value={palette.id} />
+                    <input type="hidden" name="id" value={palette?.id} />
                     <button type="submit" className="text-red-600 px-1">
                       Delete
                     </button>
