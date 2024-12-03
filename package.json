@@ -4,13 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^2.4.4",
-    "@prisma/client": "^6.0.0",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
@@ -22,10 +21,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.452.0",
-    "mongodb": "^6.10.0",
-    "mysql2": "^3.11.3",
+    "mongodb": "^6.11.0",
     "next": "^15.0.3",
-    "palettepicker": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
@@ -41,7 +38,6 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "postcss": "^8",
-    "prisma": "^6.0.0",
     "tailwindcss": "^3.4.1"
   }
 }

@@ -66,7 +66,7 @@ const Profile = async () => {
                     {palette?.name}
                   </span>
                   <form action={deletePalette}>
-                    <input type="hidden" name="id" value={palette?.id} />
+                    <input type="hidden" name="id" value={palette?._id} />
                     <button type="submit" className="text-red-600 px-1">
                       Delete
                     </button>

@@ -1,13 +1,16 @@
-import { PrismaClient } from "@prisma/client";
+import { MongoClient } from "mongodb";
 
-const prismaClientSingleton = () => new PrismaClient();
+let client;
+let clientPromise;
 
-// Check if `globalThis` already has a `prismaGlobal` property; if not, initialize it
-const prisma = globalThis.prismaGlobal || prismaClientSingleton();
-
-// In development mode, attach `prisma` to `globalThis` to ensure a singleton
-if (process.env.NODE_ENV !== "production") {
-  globalThis.prismaGlobal = prisma;
+if (!global._mongoClientPromise) {
+  client = new MongoClient(process.env.MONGODB_URI);
+  global._mongoClientPromise = client.connect();
 }
 
-export default prisma;
+clientPromise = global._mongoClientPromise;
+
+export default async function getDb() {
+  const client = await clientPromise;
+  return client.db(process.env.DB_NAME); // Replace with your database name
+}
