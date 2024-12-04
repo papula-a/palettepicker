@@ -23,26 +23,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import Icons from "@/components/Icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const { isAuthenticated, isLoading, user } = useKindeBrowserClient();
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const closeDropdown = () => {
-    setIsDropdownOpen(false);
-  };
+  // Handle loading state
+  if (isLoading) {
+    return null; // or a loading skeleton
+  }
 
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-2 bg-white shadow-md">
@@ -70,66 +65,52 @@ const Header = () => {
           {!isAuthenticated ? (
             <>
               <Button variant="outline" disabled={isLoading}>
-                {isLoading ? (
-                  <span className="flex items-center">
-                    <Icons.spinner className="animate-spin h-4 w-4 text-gray-500" />
-                  </span>
-                ) : (
-                  <LoginLink>Sign in</LoginLink>
-                )}
+                <LoginLink>Sign in</LoginLink>
               </Button>
 
               <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
 
               <Button variant="outline" disabled={isLoading}>
-                {isLoading ? (
-                  <span className="flex items-center">
-                    <Icons.spinner className="animate-spin h-4 w-4 text-gray-500" />
-                  </span>
-                ) : (
-                  <RegisterLink>Sign up</RegisterLink>
-                )}
+                <RegisterLink>Sign up</RegisterLink>
               </Button>
             </>
           ) : (
-            <div className="relative">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Avatar className="cursor-pointer">
-                    <AvatarImage src={user?.picture} alt={user?.given_name} />
-                    <AvatarFallback>PP</AvatarFallback>
-                  </Avatar>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="absolute right-0 mt-2 w-40">
-                  <DropdownMenuLabel className="text-yellow-500 text-lg flex items-center space-x-2">
-                    <FaUser className="text-gray-600" />
-                    <span>
-                      {user?.given_name} {user?.family_name}
-                    </span>
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <Link href="/profile" className="cursor-pointer">
-                        Profile
-                      </Link>
-                      <DropdownMenuShortcut className="text-yellow-500">
-                        ⇧⌘P
-                      </DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <LogoutLink>Log out</LogoutLink>
-                      <DropdownMenuShortcut className="text-yellow-500">
-                        ⇧⌘Q
-                      </DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="cursor-pointer">
+                  <AvatarImage src={user?.picture} alt={user?.given_name} />
+                  <AvatarFallback>PP</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="absolute right-0 mt-2 w-40">
+                <DropdownMenuLabel className="text-yellow-500 text-lg flex items-center space-x-2">
+                  <FaUser className="text-gray-600" />
+                  <span>
+                    {user?.given_name} {user?.family_name}
+                  </span>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <Link href="/profile" className="w-full">
+                      Profile
+                    </Link>
+                    <DropdownMenuShortcut className="text-yellow-500">
+                      ⇧⌘P
+                    </DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <LogoutLink className="w-full">Log out</LogoutLink>
+                    <DropdownMenuShortcut className="text-yellow-500">
+                      ⇧⌘Q
+                    </DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
           )}
         </div>
 
