@@ -9,7 +9,7 @@ const Profile = async () => {
   const { getUser, isAuthenticated } = getKindeServerSession();
 
   // Check if user is authenticated
-  const isUserAuthenticated = isAuthenticated();
+  const isUserAuthenticated = await isAuthenticated();
 
   if (!isUserAuthenticated) {
     redirect("/api/auth/login");
