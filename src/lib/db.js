@@ -4,7 +4,10 @@ let client;
 let clientPromise;
 
 if (!global._mongoClientPromise) {
-  client = new MongoClient(process.env.MONGODB_URI);
+  client = new MongoClient(process.env.MONGODB_URI, {
+    connectTimeoutMS: 10000,
+    tls: true,
+  });
   global._mongoClientPromise = client.connect();
 }
 

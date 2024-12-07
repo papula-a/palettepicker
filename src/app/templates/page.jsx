@@ -1,6 +1,22 @@
-import Card from "@/components/Card";
+"use client";
+
+import TemplateCard from "@/components/TemplateCard";
+import { useEffect } from "react";
 
 const Templates = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWK_IO_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWK_IO_WIDGET_ID}`;
+    script.charset = "UTF-8";
+    script.setAttribute("crossorigin", "*");
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const templates = [
     {
       title: "E-COMMERCE WEBSITE",
@@ -74,7 +90,7 @@ const Templates = () => {
           <div className="space-y-6">
             {templates.map((template, index) => (
               <div key={index} className="mb-16 last:mb-0">
-                <Card {...template} />
+                <TemplateCard {...template} />
               </div>
             ))}
           </div>
