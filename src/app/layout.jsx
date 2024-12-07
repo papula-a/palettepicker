@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import TawkToWidget from "@/components/TawkToWidget";
 import { Fredoka } from "next/font/google";
 import Footer from "../components/Footer";
 import "../styles/globals.css";
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
           {children} {/* Main content goes here */}
         </main>
         <Footer />
+        <TawkToWidget />
       </body>
     </html>
   );
